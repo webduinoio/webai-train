@@ -26,11 +26,11 @@ def main():
         if not os.path.exists(instance_dir):
             os.makedirs(instance_dir)
         copy_config = True
-        if os.path.exists(dst_config_path):
-            print("[WARNING] instance/config.py already exists, sure to rewrite it? [yes/no]")
-            ensure = input()
-            if ensure != "yes":
-                copy_config = False
+        # if os.path.exists(dst_config_path):
+        #     print("[WARNING] instance/config.py already exists, sure to rewrite it? [yes/no]")
+        #     ensure = input()
+        #     if ensure != "yes":
+        #         copy_config = False
         if copy_config:
             shutil.copyfile(os.path.join(curr_dir, "train", "config_template.py"), dst_config_path)
         print("init done, please edit instance/config.py")

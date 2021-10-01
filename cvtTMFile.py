@@ -26,7 +26,10 @@ for i in files.namelist():
 	except:
 		pass
 	try:
-		ext = filename.index('.jpg')
-		files.extract(filename, path+'.datasets/'+dir)
+		filePath=path+'.datasets/'+dir+'/'+filename
+		if os.path.exists(filePath) == False:
+			ext = filename.index('.jpg')
+			files.extract(filename, path+'.datasets/'+dir)
+			print('extract:',filePath)
 	except:
 		pass
