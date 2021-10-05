@@ -70,7 +70,9 @@ class Train():
         self.result_report_img_path = os.path.join(self.result_dir, "report.jpg")
         self.result_kmodel_path = os.path.join(self.result_dir, "m.kmodel")
         self.result_labels_path  = os.path.join(self.result_dir, "labels.txt")
+        self.result_labels_WebAI_path  = os.path.join(self.result_dir, "labels_blockly.txt")
         self.result_boot_py_path = os.path.join(self.result_dir, "boot.py")
+        self.result_anchor_path = os.path.join(self.result_dir, "anchor.txt")
         self.tflite_path = os.path.join(self.temp_dir, "m.tflite")
         self.final_h5_model_path = os.path.join(self.temp_dir, "m.h5")
         self.best_h5_model_path  = os.path.join(self.temp_dir, "m_best.h5")
@@ -236,6 +238,9 @@ class Train():
             replace = 'sensor.set_windowing(({}, {}))'.format(classifier.input_shape[1], classifier.input_shape[0])
             boot_py = boot_py.replace(target, replace)
             f.write(boot_py)
+        with open(self.result_labels_WebAI_path, "w") as f:
+            replace = '{}'.format(', '.join(classifier.labels))
+            f.write(replace)
 
         return classifier, config.classifier_result_file_name_prefix
 
@@ -319,6 +324,12 @@ class Train():
             replace = 'sensor.set_windowing(({}, {}))'.format(detector.input_shape[1], detector.input_shape[0])
             boot_py = boot_py.replace(target, replace)
             f.write(boot_py)
+        with open(self.result_labels_WebAI_path, "w") as f:
+            replace = '{}'.format(', '.join(detector.labels))
+            f.write(replace)
+        with open(self.result_anchor_path, "w") as f:
+            replace = '{}'.format(', '.join(str(i) for i in detector.anchors))
+            f.write(replace)
 
         return detector, config.detector_result_file_name_prefix
 
