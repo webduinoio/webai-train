@@ -351,7 +351,7 @@ class Classifier(Train_Base):
 
     def _get_labels(self, datasets_dir):
         labels = []
-        for d in os.listdir(datasets_dir):
+        for d in sorted(os.listdir(datasets_dir)):
             if d.startswith(".") or d == "__pycache__":
                 continue
             if os.path.isdir(os.path.join(datasets_dir, d)):
