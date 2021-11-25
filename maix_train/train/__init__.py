@@ -273,14 +273,15 @@ class Train():
             log.e("train datasets not valid: {}".format(e))
             raise Exception((TrainFailReason.ERROR_PARAM, "datasets not valid: {}".format(str(e))))
         try:
-
+            config_batch_size = config.detector_train_batch_size
+            batch_size = detector.auto_batch_size if config_batch_size == 'auto' else config_batch_size
             detector.train(epochs=config.detector_train_epochs,
                     progress_cb=self.__on_train_progress,
                     save_best_weights_path = self.best_h5_model_path,
                     save_final_weights_path = self.final_h5_model_path,
                     jitter=False,
                     is_only_detect = False,
-                    batch_size = config.detector_train_batch_size,
+                    batch_size = batch_size,
                     train_times = 5,
                     valid_times = 2,
                     learning_rate=config.detector_train_learn_rate,
