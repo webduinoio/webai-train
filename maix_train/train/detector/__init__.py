@@ -75,6 +75,8 @@ class Detector(Train_Base):
             raise Exception("no datasets args")
         # parse datasets
         ok, msg, self.labels, classes_data_counts, datasets_x, datasets_y = self._load_datasets(self.datasets_dir)
+        self.auto_batch_size = int(min(32, max(2, min(classes_data_counts)/8)))
+        
         if not ok:
             msg = f"datasets format error: {msg}"
             self.log.e(msg)
