@@ -1,0 +1,1 @@
+docker run --name train --platform=linux/amd64 -it -v `pwd`:/media/shared/ webai/cpu_maix_train /bin/bash
