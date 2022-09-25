@@ -1,5 +1,4 @@
-#FROM nvidia/cuda:11.7.1-base-ubuntu22.04
-FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
+FROM ubuntu:18.04
 
 MAINTAINER Webduino service@webduino.io
 
@@ -13,9 +12,11 @@ RUN TZ=Asia/Taipei \
 
 RUN apt-get update &&\
     apt-get -y install curl &&\
-    curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - &&\
     apt-get -y install nodejs &&\
     ln -s /usr/bin/nodejs /usr/local/bin/node
+
+# tensorflowjs_converter --input_format=keras /tmp/model.h5 /tmp/tfjs_model
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
         zip \
@@ -27,12 +28,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
         python3-pip \
     && pip3 install --upgrade pip \
     && pip3 install nvidia-ml-py3>=7.352.0 \
-    && pip3 install tensorflow==2.10.0 \
+    && pip3 install tensorflow>=2.3.1 \
     && pip3 install matplotlib>=3.2.1 \
     && pip3 install scikit-learn>=0.23.2 \
     && pip3 install imgaug>=0.4.0 \
     && pip3 install imutils>=0.5.3 \
     && pip3 install opencv-python>=4.2.0 \
+    && pip3 install tensorflowjs \
     && echo "setup complete, now clean" \
     && DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge \
     && DEBIAN_FRONTEND=noninteractive apt-get clean \
@@ -51,11 +53,11 @@ RUN apt-get update \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /media/shared/nodeapp/
+WORKDIR /media/shared/
 
+# Install puppeteer so it's available in the container.
 RUN npm install
 RUN npm i pm2 -g
 RUN NODE_ENV=production npm install
-ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu/:/usr/local/cuda-11.7/targets/x86_64-linux/:/usr/local/cuda/lib:$LD_LIBRARY_PATH
- 
+
 CMD ["sh","app.sh"]
