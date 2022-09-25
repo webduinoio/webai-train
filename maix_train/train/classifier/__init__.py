@@ -393,7 +393,10 @@ class Classifier(Train_Base):
             images = random.sample(images, num)
             for image in images:
                 path = os.path.join(self.datasets_dir, label, image)
-                img = np.array(Image.open(path))
+                # force convert to 3-channel
+                img = Image.open(path).convert('RGB')
+                img.save(path)
+                img = np.array(img)
                 if img.shape != shape:
                     msg += f"image {label}/{image} shape is {img.shape}, but require {shape}\n"
                     ok = False
