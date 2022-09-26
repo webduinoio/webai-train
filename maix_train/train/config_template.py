@@ -1,3 +1,6 @@
+
+
+
 import os
 curr_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -12,11 +15,11 @@ allow_cpu = True # True
 
 # classifier
 classifier_train_gpu_mem_require = 2*1024*1024*1024
-classifier_train_epochs = 5
+classifier_train_epochs = 40
 classifier_train_batch_size = 5
-classifier_train_max_classes_num = 5
-classifier_train_one_class_min_img_num = 20            # 一个类别中至少需要的样本数量
-classifier_train_one_class_max_img_num = 100          # 一个类别中最多需要的样本数量
+classifier_train_max_classes_num = 15
+classifier_train_one_class_min_img_num = 40            # 一个类别中至少需要的样本数量
+classifier_train_one_class_max_img_num = 2000          # 一个类别中最多需要的样本数量
 classifier_result_file_name_prefix = "maixhub_classifier_result"
 
 # detector
