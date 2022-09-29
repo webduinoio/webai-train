@@ -13,7 +13,7 @@ curr_file_dir = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 #     root_path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 #     sys.path.append(root_path)
 from train_base import Train_Base
-from utils import gpu_utils, isascii
+from utils import isascii
 from utils.logger import Logger, Fake_Logger
 
 import tempfile
@@ -416,17 +416,6 @@ def test_main(datasets_zip, model_path, report_path, use_cpu=False):
     if not os.path.exists("out"):
         os.makedirs("out")
     log = Logger(file_path="out/train.log")
-    try:
-        gpu = gpu_utils.select_gpu(memory_require = 1*1024*1024*1024, tf_gpu_mem_growth=False)
-    except Exception:
-        gpu = None
-    if gpu is None:
-        if not use_cpu:
-            log.e("no free GPU")
-            return 1
-        log.i("no GPU, will use [CPU]")
-    else:
-        log.i("select", gpu)
     classifier = Classifier(datasets_zip=datasets_zip, logger=log)
     classifier.train(epochs=2, progress_cb=train_on_progress)
     classifier.report(report_path)

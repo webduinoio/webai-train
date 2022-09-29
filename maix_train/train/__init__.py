@@ -16,7 +16,7 @@ from detector import Detector
 import requests
 import tempfile
 import shutil
-from utils import gpu_utils, isascii
+from utils import isascii
 from utils.logger import Logger, Fake_Logger
 from instance import config
 import time
@@ -175,18 +175,7 @@ class Train():
 
     def classifier_train(self, log):
         # 检测 GPU 可用,选择一个可用的 GPU 使用
-        try:
-            gpu = gpu_utils.select_gpu(memory_require = config.classifier_train_gpu_mem_require, tf_gpu_mem_growth=False)
-        except Exception:
-            gpu = None
-        if gpu is None:
-            if not config.allow_cpu:
-                log.e("no free GPU")
-                raise Exception((TrainFailReason.ERROR_NODE_BUSY, "node no enough GPU or GPU memory and not support CPU train"))
-            log.i("no GPU, will use [CPU]")
-        else:
-            log.i("select", gpu)
-
+        gpu = None
         # 启动训练
         try:
             classifier = Classifier(datasets_zip=self.datasets_zip_path, datasets_dir=self.datasets_dir, unpack_dir = self.temp_datasets_dir,
@@ -240,19 +229,6 @@ class Train():
         return classifier, config.classifier_result_file_name_prefix
 
     def detector_train(self, log):
-                # 检测 GPU 可用,选择一个可用的 GPU 使用
-        try:
-            gpu = gpu_utils.select_gpu(memory_require = config.detector_train_gpu_mem_require, tf_gpu_mem_growth=False)
-        except Exception:
-            gpu = None
-        if gpu is None:
-            if not config.allow_cpu:
-                log.e("no free GPU")
-                raise Exception((TrainFailReason.ERROR_NODE_BUSY, "node no enough GPU or GPU memory and not support CPU train"))
-            log.i("no GPU, will use [CPU]")
-        else:
-            log.i("select", gpu)
-
         # 启动训练
         try:
             detector = Detector(input_shape=(224, 224, 3),
