@@ -1,7 +1,5 @@
 FROM ubuntu:18.04
 
-MAINTAINER Webduino service@webduino.io
-
 RUN apt-get update -qq\
     &&  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 
@@ -15,8 +13,6 @@ RUN apt-get update &&\
     curl -sL https://deb.nodesource.com/setup_10.x | bash - &&\
     apt-get -y install nodejs &&\
     ln -s /usr/bin/nodejs /usr/local/bin/node
-
-# tensorflowjs_converter --input_format=keras /tmp/model.h5 /tmp/tfjs_model
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
         zip \

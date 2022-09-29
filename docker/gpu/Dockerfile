@@ -1,7 +1,4 @@
-#FROM nvidia/cuda:11.7.1-base-ubuntu22.04
 FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
-
-MAINTAINER Webduino service@webduino.io
 
 RUN apt-get update -qq\
     &&  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
