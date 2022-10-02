@@ -1,4 +1,5 @@
-docker run --name $1 -v /home/wa/docker/work/ai/$1:/media/shared/ webai/gpu_maix_train \
+# $1:{{jobName}} , $2:{jobHomePath} , $2/../ <-- ncc folder
+docker rm -f $1
+docker run --name $1 -v $2:/media/shared/ -v $2/../:/usr/src/ webai/gpu_maix_train \
 /bin/bash -c \
-"cd /media/shared/maix_train && ../compilerModel.sh $2" \
-&& docker rm -f $1
+"cd /media/shared/maix_train && ../compilerModel.sh project.tm" && docker rm -f $1
