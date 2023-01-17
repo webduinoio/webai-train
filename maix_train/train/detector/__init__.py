@@ -9,28 +9,29 @@
 
 
 
-import sys, os
+import os
+import sys
+
 curr_file_dir = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(curr_file_dir)
 # import os, sys
 # root_path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 # sys.path.append(root_path)
 
-from utils import isascii
-from utils.logger import Logger, Fake_Logger
-
-import tempfile
-import shutil
-import zipfile
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix
-import numpy as np
 import itertools
 import random
 import re
-import kmeans
+import shutil
+import tempfile
+import zipfile
 
+import kmeans
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import confusion_matrix
 from train_base import Train_Base
+from utils import isascii
+from utils.logger import Fake_Logger, Logger
 
 
 class Detector(Train_Base):
@@ -43,7 +44,7 @@ class Detector(Train_Base):
             input_shape: input shape (height, width)
             min_images_num: min image number in one class
         '''
-        import tensorflow as tf # for multiple process
+        import tensorflow as tf  # for multiple process
         self.tf = tf
         self.need_rm_datasets = False
         self.input_shape = input_shape
@@ -75,6 +76,7 @@ class Detector(Train_Base):
             raise Exception("no datasets args")
         # parse datasets
         ok, msg, self.labels, classes_data_counts, datasets_x, datasets_y = self._load_datasets(self.datasets_dir)
+        self.auto_batch_size = int(min(32, max(2, min(classes_data_counts)/8)))
         if not ok:
             msg = f"datasets format error: {msg}"
             self.log.e(msg)
@@ -301,11 +303,11 @@ class Detector(Train_Base):
         if tflite_path:
             print("save tfilte to :", tflite_path)
             import tensorflow as tf
+
             # converter = tf.lite.TFLiteConverter.from_keras_model(model)
             # tflite_model = converter.convert()
             # with open (tflite_path, "wb") as f:
             #     f.write(tflite_model)
-
             ## kpu V3 - nncase = 0.1.0rc5
             # model.save("weights.h5", include_optimizer=False)
             model = tf.keras.models.load_model(src_h5_path)
@@ -362,8 +364,8 @@ class Detector(Train_Base):
 
     def _get_confusion_matrix(self, ):
         batch_size = 5
-        from tensorflow.keras.preprocessing.image import ImageDataGenerator
         from tensorflow.keras.applications.mobilenet import preprocess_input
+        from tensorflow.keras.preprocessing.image import ImageDataGenerator
         valid_gen = ImageDataGenerator(preprocessing_function=preprocess_input)
         valid_data = valid_gen.flow_from_directory(self.datasets_dir,
                 target_size=[self.input_shape[0], self.input_shape[1]],

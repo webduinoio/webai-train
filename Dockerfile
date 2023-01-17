@@ -30,9 +30,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     && pip3 install imgaug>=0.4.0 \
     && pip3 install imutils>=0.5.3 \
     && pip3 install opencv-python>=4.2.0 \
-    && pip3 install tensorflowjs \
     && pip3 install opencv-python-headless \
     && pip3 install numpy==1.23.5 \
+    && pip3 install tensorflowjs \
     && echo "setup complete, now clean" \
     && DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge \
     && DEBIAN_FRONTEND=noninteractive apt-get clean \
@@ -51,11 +51,14 @@ RUN apt-get update \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /media/shared/
+WORKDIR /data
 
 RUN npm install
-RUN npm i pm2 -g
+RUN npm i pm2 node-red -g
 RUN NODE_ENV=production npm install
 ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu/:/usr/local/cuda-11.7/targets/x86_64-linux/:/usr/local/cuda/lib:$LD_LIBRARY_PATH
 
-CMD ["sh","app.sh"]
+RUN pip3 install opencv-python-headless \
+    && pip3 install numpy==1.23.5
+
+CMD ["node-red", "-u", "/data"]

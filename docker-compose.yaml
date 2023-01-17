@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+  node-red-job-gpu:
+    image: rick/node-red-job-gpu:latest
+    container_name: node-red-job-gpu
+    networks:
+      - traefik-public
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.node-red-job-gpu.entrypoints=http
+      - traefik.http.routers.node-red-job-gpu.rule=Host(`kk-staging.nodered.vip`)
+      - traefik.http.routers.node-red-job-gpu.middlewares=node-red-job-gpu-https-redirect
+      - traefik.http.middlewares.node-red-job-gpu-https-redirect.redirectscheme.scheme=https
+      
+      - traefik.http.routers.node-red-job-gpu-secure.entrypoints=https
+      - traefik.http.routers.node-red-job-gpu-secure.rule=Host(`kk-staging.nodered.vip`)
+      - traefik.http.routers.node-red-job-gpu-secure.tls=true
+      - traefik.http.routers.node-red-job-gpu-secure.service=node-red-job-gpu
+
+      # Basic Auth
+      - traefik.http.routers.node-red-job-gpu-secure.middlewares=node-red-job-gpu-auth
+      - traefik.http.middlewares.node-red-job-gpu-auth.basicauth.users=wa:$$apr1$$6ZZ07Jrm$$KIGpQ7BxqkEIhHzeB4W2V1
+      
+      # exclude /api
+      - traefik.http.routers.node-red-job-gpu-secure2.entrypoints=https
+      - traefik.http.routers.node-red-job-gpu-secure2.rule=Host(`kk-staging.nodered.vip`) && PathPrefix(`/api`)
+      - traefik.http.routers.node-red-job-gpu-secure2.tls=true
+      - traefik.http.routers.node-red-job-gpu-secure2.service=node-red-job-gpu
+
+      - traefik.http.services.node-red-job-gpu.loadbalancer.server.port=1880
+
+    volumes:
+      - /home/wa/docker/node-red-job-staging:/data
+      - ./:/data/luxury-job01
+
+networks:
+  traefik-public:
+    external: true

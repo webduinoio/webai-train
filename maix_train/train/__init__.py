@@ -5,27 +5,31 @@
     @license Apache 2.0 © 2020 Sipeed Ltd
 '''
 
-import os, sys
+import os
+import sys
+
 root_path = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 sys.path.append(root_path)
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
+import json
+import shutil
+import subprocess
+import tempfile
+import time
+import traceback
+import zipfile
+from datetime import datetime
+from enum import Enum
+
+import requests
 from classifier import Classifier
 from detector import Detector
-import requests
-import tempfile
-import shutil
-from utils import isascii
-from utils.logger import Logger, Fake_Logger
 from instance import config
-import time
-from datetime import datetime
-import subprocess
-import zipfile
-import traceback
-import json
-from enum import Enum
+from utils import isascii
+from utils.logger import Fake_Logger, Logger
+
 
 class TrainType(Enum):
     CLASSIFIER = 0
@@ -244,6 +248,8 @@ class Train():
             log.e("train datasets not valid: {}".format(e))
             raise Exception((TrainFailReason.ERROR_PARAM, "datasets not valid: {}".format(str(e))))
         try:
+            config_batch_size = config.detector_train_batch_size
+            batch_size = detector.auto_batch_size if config_batch_size == 'auto' else config_batch_size
 
             detector.train(epochs=config.detector_train_epochs,
                     progress_cb=self.__on_train_progress,
@@ -251,7 +257,7 @@ class Train():
                     save_final_weights_path = self.final_h5_model_path,
                     jitter=False,
                     is_only_detect = False,
-                    batch_size = config.detector_train_batch_size,
+                    batch_size = batch_size,
                     train_times = 5,
                     valid_times = 2,
                     learning_rate=config.detector_train_learn_rate,

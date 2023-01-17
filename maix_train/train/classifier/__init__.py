@@ -394,8 +394,13 @@ class Classifier(Train_Base):
             for image in images:
                 path = os.path.join(self.datasets_dir, label, image)
                 # force convert to 3-channel
-                img = Image.open(path).convert('RGB')
-                img.save(path)
+                img = Image.open(path)
+                h, w = img.size
+                c = img.mode
+                if(c!='RGB'):
+                    img = img.convert('RGB')
+                if(h!=224 or w!=224):
+                    img = img.resize((224, 224))
                 img = np.array(img)
                 if img.shape != shape:
                     msg += f"image {label}/{image} shape is {img.shape}, but require {shape}\n"
@@ -434,4 +439,3 @@ if __name__ == "__main__":
         arg: datasets_zip_file out_h5_model_path out_report_image_path
     '''
     test()
-
