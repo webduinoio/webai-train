@@ -1,19 +1,4930 @@
 [
     {
-        "id": "f6f2187d.f17ca8",
+        "id": "75af274027ee97af",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "任務管理",
         "disabled": false,
-        "info": ""
+        "info": "",
+        "env": []
     },
     {
-        "id": "3cc11d24.ff01a2",
+        "id": "e267595a6a2cbfb7",
+        "type": "tab",
+        "label": "luxury 主機",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dd2457f29a916d8b",
+        "type": "tab",
+        "label": "測試",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "590ce44428b2fd93",
+        "type": "subflow",
+        "name": "Slack Bot",
+        "info": "## Slack Notify\n\n### 設定傳送頻道\nmsg.channel = '#nodebot'\n\n### 設定傳送訊息\nmsg.message = 'Hello World'",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "1d22c3714428800b"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 620,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "d5df26ea256c4f54",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "channel",
+                "type": "str",
+                "value": "testbot"
+            },
+            {
+                "name": "message",
+                "type": "str",
+                "value": "Hello World"
+            }
+        ],
+        "meta": {},
+        "color": "#C7E9C0",
+        "icon": "node-red/inject.svg"
+    },
+    {
+        "id": "0c5913027dff3bd5",
+        "type": "subflow",
+        "name": "Line Bot",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 160,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "855694dd3cf538d9"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 600,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "26488df53b420604",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "Message",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#C7E9C0",
+        "icon": "node-red/inject.svg"
+    },
+    {
+        "id": "29b03a1d06d96063",
+        "type": "subflow",
+        "name": "拍照",
+        "info": "使用方式\n====\n 1. 將 WebEye 插電連上網路\n 2. 輸入 deviceID\n 3. 修改預設存放的雲端檔案路徑 (選項)\n 4. 設定 output_url , 0: url 字串 , 1: 二進制圖片資料\n\n ",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "3fb39352f9942d70"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 790,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "5098e85880540ef7",
+                        "port": 0
+                    },
+                    {
+                        "id": "62fe15b1289402a8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "deviceId",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "shareId",
+                "type": "str",
+                "value": "TZ0RpTwy",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "output",
+                "type": "str",
+                "value": "url",
+                "ui": {
+                    "label": {
+                        "zh-TW": "output"
+                    },
+                    "type": "select",
+                    "opts": {
+                        "opts": [
+                            {
+                                "l": {
+                                    "zh-TW": "URL 字串"
+                                },
+                                "v": "url"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "圖片資料"
+                                },
+                                "v": "binary"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#Fe8887",
+        "outputLabels": [
+            "image"
+        ],
+        "icon": "node-red/file-out.svg",
+        "status": {
+            "x": 680,
+            "y": 80,
+            "wires": [
+                {
+                    "id": "3fb39352f9942d70",
+                    "port": 0
+                },
+                {
+                    "id": "29b03a1d06d96063",
+                    "port": 0
+                },
+                {
+                    "id": "970da3c3c2c3aad6",
+                    "port": 0
+                },
+                {
+                    "id": "62fe15b1289402a8",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "4632cbe7b6cde4eb",
+        "type": "subflow",
+        "name": "WebEye Pro",
+        "info": "### WebApp\nhttps://webeye-pro.webduino.io/?deviceId=${deviceId}\n\n### Google Drive:\nhttps://drive.google.com/drive/folders/1pC_PStc6_B5-mQbUbhp6uwqdjbGBQ9_u\n",
+        "category": "",
+        "in": [
+            {
+                "x": 480,
+                "y": 400,
+                "wires": [
+                    {
+                        "id": "75b402800170bc89"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 870,
+                "y": 400,
+                "wires": [
+                    {
+                        "id": "16bb2e8bac2054ed",
+                        "port": 1
+                    },
+                    {
+                        "id": "75b402800170bc89",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "deviceID",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "action",
+                "type": "str",
+                "value": "snapshot",
+                "ui": {
+                    "type": "select",
+                    "opts": {
+                        "opts": [
+                            {
+                                "l": {
+                                    "zh-TW": "拍照上傳 Google硬碟"
+                                },
+                                "v": "snapshot"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "拍照上傳 Webduino雲端硬碟"
+                                },
+                                "v": "capture"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "外部輸入"
+                                },
+                                "v": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#Fe8887",
+        "outputLabels": [
+            "debug"
+        ],
+        "status": {
+            "x": 840,
+            "y": 140,
+            "wires": [
+                {
+                    "id": "16bb2e8bac2054ed",
+                    "port": 0
+                },
+                {
+                    "id": "855f6319b1a14592",
+                    "port": 0
+                },
+                {
+                    "id": "16bb2e8bac2054ed",
+                    "port": 1
+                }
+            ]
+        }
+    },
+    {
+        "id": "6123def5fc064bce",
+        "type": "subflow",
+        "name": "智慧插座",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 260,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "9bc15c2873eb057e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 760,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "01d60c892cac53f5",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "deviceId",
+                "type": "str",
+                "value": "123"
+            }
+        ],
+        "meta": {},
+        "color": "#Fe8887",
+        "icon": "font-awesome/fa-cube",
+        "status": {
+            "x": 760,
+            "y": 220,
+            "wires": [
+                {
+                    "id": "6ae8a472289b3dac",
+                    "port": 0
+                },
+                {
+                    "id": "9bc15c2873eb057e",
+                    "port": 0
+                },
+                {
+                    "id": "b30c1d92b271c65d",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "7901885190087d7c",
+        "type": "subflow",
+        "name": "FileBrowser",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "44770cdb08310268"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 860,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "08764e445c4dd21b",
+                        "port": 0
+                    },
+                    {
+                        "id": "cf8852a80d2c60bb",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "username",
+                "type": "str",
+                "value": "admin",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "password",
+                "type": "str",
+                "value": "wa525420",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "shareId",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "folder",
+                "type": "str",
+                "value": "/mycam02/",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "0: 上傳 , 1: 下載",
+                "type": "num",
+                "value": "0",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num",
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#C0DEED",
+        "inputLabels": [
+            "binary"
+        ],
+        "outputLabels": [
+            "url"
+        ],
+        "icon": "node-red/leveldb.png"
+    },
+    {
+        "id": "78b240a19274d8dc",
+        "type": "subflow",
+        "name": "取得氣象預報",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "a3a2a52f0a6c9a59"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 820,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "895c550d3d2ad1d7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "指定縣市",
+                "type": "str",
+                "value": "高雄市",
+                "ui": {
+                    "type": "select",
+                    "opts": {
+                        "opts": [
+                            {
+                                "l": {
+                                    "zh-TW": "臺北市"
+                                },
+                                "v": "臺北市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "新北市"
+                                },
+                                "v": "新北市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "新竹縣"
+                                },
+                                "v": "新竹縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "基隆市"
+                                },
+                                "v": "基隆市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "桃園市"
+                                },
+                                "v": "桃園市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "新竹市"
+                                },
+                                "v": "新竹市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "苗栗縣"
+                                },
+                                "v": "苗栗縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "臺中市"
+                                },
+                                "v": "臺中市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "彰化縣"
+                                },
+                                "v": "彰化縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "南投縣"
+                                },
+                                "v": "南投縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "雲林縣"
+                                },
+                                "v": "雲林縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "嘉義市"
+                                },
+                                "v": "嘉義市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "嘉義縣"
+                                },
+                                "v": "嘉義縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "臺南市"
+                                },
+                                "v": "臺南市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "高雄市"
+                                },
+                                "v": "高雄市"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "屏東縣"
+                                },
+                                "v": "屏東縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "宜蘭縣"
+                                },
+                                "v": "宜蘭縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "花蓮縣"
+                                },
+                                "v": "花蓮縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "臺東縣"
+                                },
+                                "v": "臺東縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "金門縣"
+                                },
+                                "v": "金門縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "澎湖縣"
+                                },
+                                "v": "澎湖縣"
+                            },
+                            {
+                                "l": {
+                                    "zh-TW": "連江縣"
+                                },
+                                "v": "連江縣"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#C0DEED",
+        "icon": "node-red/white-globe.svg"
+    },
+    {
+        "id": "d636f9e112c0b0b9",
+        "type": "subflow",
+        "name": "上傳試算表",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "78e18f7e08350886"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 860,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "5d9259fc569bfc11",
+                        "port": 0
+                    },
+                    {
+                        "id": "fa3fa47f49c847eb",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "sheetUrl",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "sheetName",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "startRow (1..n)",
+                "type": "num",
+                "value": "1",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "startCol (1..n)",
+                "type": "num",
+                "value": "1",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "rows",
+                "type": "num",
+                "value": "100",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "cols",
+                "type": "num",
+                "value": "10",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "num"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "scriptId",
+                "type": "str",
+                "value": "https://script.google.com/macros/s/AKfycbxtSVHMHhqQe_EjaLD-aa313h4L4ebOG86eqBUKynAady2bMI9zFCAZqLTp40eHniXJ/exec",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "append",
+                "type": "bool",
+                "value": "false",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "bool"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#C0DEED"
+    },
+    {
+        "id": "259907a7c748c6e4",
+        "type": "subflow",
+        "name": "下載試算表",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "41e1b9095f7e7951"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "51a5ce632021df06",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "sheetUrl",
+                "type": "str",
+                "value": "https://docs.google.com/spreadsheets/d/1RJxBa1hdkMGYVccfLqjQ4zqp6QKnzTJAE_KxIS7ZR5o/edit?usp=sharing",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "sheetName",
+                "type": "str",
+                "value": "工作表1",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "scriptId",
+                "type": "str",
+                "value": "https://script.google.com/macros/s/AKfycbzw2Wx-2lGJUGOWvpbLB9O2pn8-Zmg7OpCvg8v3O5CFMIq8BrcXZvonoIHjtQl519ibfQ/exec",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#C0DEED"
+    },
+    {
+        "id": "3ece654c0b7fdb3a",
+        "type": "subflow",
+        "name": "訓練模型",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "0ee91e2f9355321c"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 850,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "9f6b8f3a62dee93a",
+                        "port": 1
+                    },
+                    {
+                        "id": "bc14f006aeaf2379",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 850,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "9f6b8f3a62dee93a",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 870,
+                "y": 380,
+                "wires": [
+                    {
+                        "id": "32957a715ab32b1d",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 510,
+                "y": 500,
+                "wires": [
+                    {
+                        "id": "54f8272d4e749825",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "accessKeyId",
+                "type": "env",
+                "value": "accessKeyId",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "secretAccessKey",
+                "type": "env",
+                "value": "secretAccessKey",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "region",
+                "type": "env",
+                "value": "region",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "bucket",
+                "type": "env",
+                "value": "bucket",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#6de3e1",
+        "outputLabels": [
+            "status",
+            "stdout",
+            "completed",
+            "errout"
+        ]
+    },
+    {
+        "id": "5c52e3f7e50cd19e",
+        "type": "subflow",
+        "name": "SendJob",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "d46210587af5db79"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1060,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "4505d05ed9bc42cd",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "jobHome",
+                "type": "str",
+                "value": "macm2-job01",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#9dfaf8",
+        "inputLabels": [
+            "工作資訊"
+        ],
+        "outputLabels": [
+            "完成通知"
+        ],
+        "icon": "node-red/switch.svg",
+        "status": {
+            "x": 1020,
+            "y": 420,
+            "wires": [
+                {
+                    "id": "8fd168e455501207",
+                    "port": 0
+                },
+                {
+                    "id": "8da46d27840e167d",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "1e831e2fcbd588fe",
+        "type": "subflow",
+        "name": "RecvJob",
+        "info": "",
+        "category": "",
+        "in": [],
+        "out": [],
+        "env": [
+            {
+                "name": "jobHome",
+                "type": "str",
+                "value": "jobHome"
+            },
+            {
+                "name": "accessKeyId",
+                "type": "env",
+                "value": "accessKeyId"
+            },
+            {
+                "name": "secretAccessKey",
+                "type": "env",
+                "value": "secretAccessKey"
+            },
+            {
+                "name": "region",
+                "type": "env",
+                "value": "region"
+            },
+            {
+                "name": "bucket",
+                "type": "env",
+                "value": "bucket"
+            }
+        ],
+        "meta": {},
+        "color": "#9dfaf8",
+        "icon": "font-awesome/fa-gears",
+        "status": {
+            "x": 900,
+            "y": 400,
+            "wires": [
+                {
+                    "id": "f427e9241adc559e",
+                    "port": 0
+                },
+                {
+                    "id": "e339f870026f44fc",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "7bdfbab50f290d31",
+        "type": "subflow",
+        "name": "JobState",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "7782d5bad8d65d63"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 820,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "2c3e74add19cae7a",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#9dfaf8"
+    },
+    {
+        "id": "96e277033a13dd3a",
+        "type": "subflow",
+        "name": "影像分類訓練",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "a0207992115c638f"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 820,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "e3de133a7d4293db",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 820,
+                "y": 320,
+                "wires": [
+                    {
+                        "id": "21dba5312c1e8439",
+                        "port": 1
+                    }
+                ]
+            },
+            {
+                "x": 820,
+                "y": 380,
+                "wires": [
+                    {
+                        "id": "21dba5312c1e8439",
+                        "port": 2
+                    }
+                ]
+            },
+            {
+                "x": 820,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "21dba5312c1e8439",
+                        "port": 3
+                    }
+                ]
+            },
+            {
+                "x": 820,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "0eb041618ddfc5b6",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "jobHome",
+                "type": "env",
+                "value": "jobHome",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "accessKeyId",
+                "type": "env",
+                "value": "accessKeyId",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "secretAccessKey",
+                "type": "env",
+                "value": "secretAccessKey",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "region",
+                "type": "env",
+                "value": "region",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "bucket",
+                "type": "env",
+                "value": "bucket",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "env"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#6de3e1",
+        "inputLabels": [
+            "訓練參數"
+        ],
+        "outputLabels": [
+            "回傳訊息",
+            "進度輸出",
+            "完成訓練",
+            "錯誤輸出",
+            "查詢回報"
+        ],
+        "status": {
+            "x": 860,
+            "y": 260,
+            "wires": [
+                {
+                    "id": "21dba5312c1e8439",
+                    "port": 0
+                },
+                {
+                    "id": "cf7598126b46d457",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "af8f08fd1fbf82a8",
+        "type": "group",
+        "z": "dd2457f29a916d8b",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "78fa10e068209922",
+            "0ff03a781ffed316",
+            "e03c158945cff899",
+            "4258d6cd7a05c812",
+            "bdcca09493b5b5c4",
+            "f289ffed3ab5062c"
+        ],
+        "x": 74,
+        "y": 59
+    },
+    {
+        "id": "356036784e8d4c20",
+        "type": "group",
+        "z": "dd2457f29a916d8b",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "d2aa75eb874dfa2d",
+            "240a02b75ab58cad",
+            "222b84cceb9db65b",
+            "bbfc9bf0893a0508",
+            "fe17e8a12a5295fe",
+            "8e4e9a0f3d9621e9"
+        ],
+        "x": 74,
+        "y": 199
+    },
+    {
+        "id": "af6c4a03d5ed50e1",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "e607e1711e0f728f",
+        "type": "mqtt-broker",
+        "name": "Webduino MQTT",
+        "broker": "test-taoyuan-expert.webduino.tw",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ad4dd764831bdb12",
+        "type": "postgreSQLConfig",
+        "name": "Prod vision-AI",
+        "host": "production-postgres.czqqidnugvnf.ap-northeast-2.rds.amazonaws.com",
+        "hostFieldType": "str",
+        "port": "5432",
+        "portFieldType": "num",
+        "database": "mldb",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "postgres",
+        "userFieldType": "str",
+        "password": "PWSeS6kX",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0a04a7be3ffe5bcc",
+        "type": "config-log",
+        "logname": "job",
+        "logdir": "/data/",
+        "stamp": "utc",
+        "logstyle": "plain",
+        "logrotate": true,
+        "logcompress": false,
+        "logrotatecount": "5",
+        "logsize": "1000"
+    },
+    {
+        "id": "14d16f0193a56b6d",
+        "type": "websocket-listener",
+        "path": "/api/ws/recvMsg",
+        "wholemsg": "false"
+    },
+    {
+        "id": "8c7ab0ab44181b48",
+        "type": "postgreSQLConfig",
+        "z": "96e277033a13dd3a",
+        "name": "Test Vision-AI",
+        "host": "production-postgres.czqqidnugvnf.ap-northeast-2.rds.amazonaws.com",
+        "hostFieldType": "str",
+        "port": "5432",
+        "portFieldType": "num",
+        "database": "mldb_staging",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "postgres",
+        "userFieldType": "str",
+        "password": "PWSeS6kX",
+        "passwordFieldType": "str",
+        "info": "DB_HOST: dev.czqqidnugvnf.ap-northeast-2.rds.amazonaws.com\nDB_PORT: \"5432\"\nDB_USER: postgres\nDB_PASSWORD: rxNPyK2R"
+    },
+    {
+        "id": "a98062b2d10c9fd8",
+        "type": "postgreSQLConfig",
+        "z": "3ece654c0b7fdb3a",
+        "name": "Test Vision-AI",
+        "host": "production-postgres.czqqidnugvnf.ap-northeast-2.rds.amazonaws.com",
+        "hostFieldType": "str",
+        "port": "5432",
+        "portFieldType": "num",
+        "database": "mldb_staging",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "postgres",
+        "userFieldType": "str",
+        "password": "PWSeS6kX",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "d5df26ea256c4f54",
+        "type": "http request",
+        "z": "590ce44428b2fd93",
+        "name": "Slack API",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 480,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d22c3714428800b",
+        "type": "function",
+        "z": "590ce44428b2fd93",
+        "name": "設定 URL",
+        "func": "var channel = typeof msg.channel == 'undefined' ? env.get('channel') : msg.channel;\nvar message = typeof msg.message == 'undefined' ? env.get('message') : msg.message;\n\nmsg.url = \"https://webhooks.webduino.tw/mqttSlack/\"\n    + channel + \"/\" + message;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 140,
+        "wires": [
+            [
+                "d5df26ea256c4f54"
+            ]
+        ]
+    },
+    {
+        "id": "26488df53b420604",
+        "type": "http request",
+        "z": "0c5913027dff3bd5",
+        "name": "Line API",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 460,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "855694dd3cf538d9",
+        "type": "function",
+        "z": "0c5913027dff3bd5",
+        "name": "設定 URL",
+        "func": "var message = typeof msg.message == 'undefined' ? env.get('Message') : msg.message;\nmsg.url = \"https://webhooks.webduino.tw/lineBot/\" + message;\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "26488df53b420604"
+            ]
+        ]
+    },
+    {
+        "id": "3fb39352f9942d70",
+        "type": "subflow:4632cbe7b6cde4eb",
+        "z": "29b03a1d06d96063",
+        "name": "",
+        "env": [
+            {
+                "name": "deviceID",
+                "value": "deviceId",
+                "type": "env"
+            },
+            {
+                "name": "action",
+                "value": "capture",
+                "type": "str"
+            }
+        ],
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "970da3c3c2c3aad6"
+            ]
+        ]
+    },
+    {
+        "id": "970da3c3c2c3aad6",
+        "type": "function",
+        "z": "29b03a1d06d96063",
+        "name": "組合圖片Url",
+        "func": "if (msg.payload.startsWith('upload ')){\n    var filename = msg.payload.split(' ')[1];\n    filename =\n        \"https://filebrowser.webduino.tw/\"\n        + \"filebrowser/api/public/dl/\"+env.get(\"shareId\")+\"/\"\n        + filename + \"?inline=true\";\n    msg.payload = filename;\n    msg.url = filename;\n    msg.sw = env.get('output'); // url , binary\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "62fe15b1289402a8"
+            ]
+        ]
+    },
+    {
+        "id": "62fe15b1289402a8",
+        "type": "switch",
+        "z": "29b03a1d06d96063",
+        "name": "",
+        "property": "sw",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "url",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "binary",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [],
+            [
+                "5098e85880540ef7"
+            ]
+        ]
+    },
+    {
+        "id": "5098e85880540ef7",
+        "type": "http request",
+        "z": "29b03a1d06d96063",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 640,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "412b786587e2407e",
+        "type": "mqtt in",
+        "z": "4632cbe7b6cde4eb",
+        "name": "接收命令",
+        "topic": "",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "55d0685b2d46b941"
+            ]
+        ]
+    },
+    {
+        "id": "0a32d4c6652e9693",
+        "type": "mqtt out",
+        "z": "4632cbe7b6cde4eb",
+        "name": "MQTT",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e607e1711e0f728f",
+        "x": 730,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "5ddc67c5a4d2e682",
         "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
-        "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
-        "x": 350,
+        "z": "4632cbe7b6cde4eb",
+        "name": "WebEye Pro",
+        "info": "",
+        "x": 110,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e009ab8f8d077f41",
+        "type": "function",
+        "z": "4632cbe7b6cde4eb",
+        "name": "設定deviceID",
+        "func": "// 部署節點後，此處添加的代碼將運行一次。 \nvar deviceID = env.get('deviceID');\nmsg.action = 'subscribe';\nmsg.topic = deviceID + '/state';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "412b786587e2407e",
+                "9e3525ac506fbc07"
+            ]
+        ]
+    },
+    {
+        "id": "55d0685b2d46b941",
+        "type": "function",
+        "z": "4632cbe7b6cde4eb",
+        "name": "開啟/關閉/切換",
+        "func": "var deviceID = env.get('deviceID');\nvar data = msg.payload.split(' ');\nmsg.type = data[0];\nif (msg.type == 'info'){\n    msg.payload = \"裝置 \" +deviceID+\" 已連接\";\n} else {\n    msg.type = 'state';\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "16bb2e8bac2054ed"
+            ]
+        ]
+    },
+    {
+        "id": "855f6319b1a14592",
+        "type": "inject",
+        "z": "4632cbe7b6cde4eb",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "裝置連線中",
+        "payloadType": "str",
+        "x": 90,
+        "y": 140,
+        "wires": [
+            [
+                "e009ab8f8d077f41"
+            ]
+        ]
+    },
+    {
+        "id": "9e3525ac506fbc07",
+        "type": "function",
+        "z": "4632cbe7b6cde4eb",
+        "name": "偵測裝置狀態",
+        "func": "var deviceID = env.get('deviceID');\nvar msg = {}\nmsg.topic = deviceID + '/info';\nmsg.payload = '';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 440,
+        "wires": [
+            [
+                "0a32d4c6652e9693"
+            ]
+        ]
+    },
+    {
+        "id": "f45f027e9a036b71",
+        "type": "status",
+        "z": "4632cbe7b6cde4eb",
+        "name": "等MQTT上線",
+        "scope": [
+            "412b786587e2407e"
+        ],
+        "x": 110,
+        "y": 440,
+        "wires": [
+            [
+                "9e3525ac506fbc07"
+            ]
+        ]
+    },
+    {
+        "id": "16bb2e8bac2054ed",
+        "type": "switch",
+        "z": "4632cbe7b6cde4eb",
+        "name": "",
+        "property": "type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "info",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "state",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "75b402800170bc89",
+        "type": "function",
+        "z": "4632cbe7b6cde4eb",
+        "name": "組合命令",
+        "func": "var deviceID = env.get('deviceID');\nvar rawData = env.get('action');\n\nif(typeof rawData!='undefined' && rawData!=\"\"){\n    rawData = rawData.split(' ');\n} else {\n    rawData = msg.payload.split(' ');\n}\n// default cmd\nrawData.push(env.get('deviceID'));\n\nmsg.topic = deviceID + '/' + rawData[0];\nmsg.payload = rawData[1];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 400,
+        "wires": [
+            [
+                "0a32d4c6652e9693"
+            ]
+        ]
+    },
+    {
+        "id": "01d60c892cac53f5",
+        "type": "mqtt in",
+        "z": "6123def5fc064bce",
+        "name": "接收命令",
+        "topic": "",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "b30c1d92b271c65d"
+            ]
+        ]
+    },
+    {
+        "id": "9275c5a0d5ffafe3",
+        "type": "mqtt out",
+        "z": "6123def5fc064bce",
+        "name": "MQTT",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e607e1711e0f728f",
+        "x": 610,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "2cf9c0eccb033a4b",
+        "type": "comment",
+        "z": "6123def5fc064bce",
+        "name": "智慧插座",
+        "info": "假設 device SSID 是 wb5499，智慧插座訂閱(sub)與發佈(pub) 通道與指令如下\n\n\nTopic\nType\nData\n說明\n1\nwb5499/set\nsub\non\n打開電器\n2\nwb5499/set\nsub\noff\n關閉電器\n3\nwb5499/set\nsub\nsw\n切換電器狀態\n4\nwb5499/state\npub\n{ on | off }\n按下按鈕，傳送目前電器狀態 on 或 off\n",
+        "x": 120,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6ae8a472289b3dac",
+        "type": "inject",
+        "z": "6123def5fc064bce",
+        "name": "start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "裝置離線",
+        "payloadType": "str",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "63ee61279bcd7ad6"
+            ]
+        ]
+    },
+    {
+        "id": "9bc15c2873eb057e",
+        "type": "function",
+        "z": "6123def5fc064bce",
+        "name": "組合命令",
+        "func": "var deviceID = env.get('deviceId');\nmsg.topic = deviceID + '/set';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 300,
+        "wires": [
+            [
+                "9275c5a0d5ffafe3"
+            ]
+        ]
+    },
+    {
+        "id": "63ee61279bcd7ad6",
+        "type": "function",
+        "z": "6123def5fc064bce",
+        "name": "取得狀態",
+        "func": "// 部署節點後，此處添加的代碼將運行一次。 \nvar deviceID = env.get('deviceId');\nmsg.action = 'subscribe';\nmsg.topic = deviceID + '/state';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "01d60c892cac53f5"
+            ]
+        ]
+    },
+    {
+        "id": "b30c1d92b271c65d",
+        "type": "function",
+        "z": "6123def5fc064bce",
+        "name": "更新狀態",
+        "func": "msg.payload = '已連接' + ' / 狀態：' + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e3cbf52a4fa3440f",
+        "type": "http request",
+        "z": "7901885190087d7c",
+        "name": "登入",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://filebrowser.webduino.tw/filebrowser/api/login",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "46ebe5ec2f92a3af"
+            ]
+        ]
+    },
+    {
+        "id": "46ebe5ec2f92a3af",
+        "type": "function",
+        "z": "7901885190087d7c",
+        "name": "準備檔案資料",
+        "func": "msg.headers = {\n    \"x-auth\":msg.payload\n};\nmsg.payload = flow.get('file');\nmsg.url = 'https://filebrowser.webduino.tw/'\n        + 'filebrowser/api/resources/'\n        + env.get('folder') +'/'\n        + flow.get('filename') + '?override=true';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "08764e445c4dd21b"
+            ]
+        ]
+    },
+    {
+        "id": "08764e445c4dd21b",
+        "type": "http request",
+        "z": "7901885190087d7c",
+        "name": "上傳檔案",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 700,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cb14688f55ee4331",
+        "type": "function",
+        "z": "7901885190087d7c",
+        "name": "存檔名",
+        "func": "if('filename' in msg){\n    flow.set('filename', msg.filename);\n} else {\n    flow.set('filename', 'default.jpg');\n}\n\nflow.set('file', msg.payload);\n\nmsg.payload = {\n    username: env.get('username'),\n    password: env.get('password'),\n    recaptcha: \"\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "e3cbf52a4fa3440f"
+            ]
+        ]
+    },
+    {
+        "id": "44770cdb08310268",
+        "type": "switch",
+        "z": "7901885190087d7c",
+        "name": "",
+        "property": "0: 上傳 , 1: 下載",
+        "propertyType": "env",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "cb14688f55ee4331"
+            ],
+            [
+                "619f93a8f8a2b475"
+            ]
+        ]
+    },
+    {
+        "id": "619f93a8f8a2b475",
+        "type": "function",
+        "z": "7901885190087d7c",
+        "name": "下載連結",
+        "func": "var filename = \n      \"https://filebrowser.webduino.tw/\"\n    + \"filebrowser/api/public/dl/\"+env.get('shareId')+\"/\"\n    + msg.filename + \"?inline=true\";\nmsg.url = filename;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "cf8852a80d2c60bb"
+            ]
+        ]
+    },
+    {
+        "id": "cf8852a80d2c60bb",
+        "type": "http request",
+        "z": "7901885190087d7c",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 480,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5ee3f2e35f593908",
+        "type": "http request",
+        "z": "78b240a19274d8dc",
+        "name": "台灣氣象預報",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://webhooks.webduino.tw/_wa_opendata_cwb",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "895c550d3d2ad1d7"
+            ]
+        ]
+    },
+    {
+        "id": "895c550d3d2ad1d7",
+        "type": "function",
+        "z": "78b240a19274d8dc",
+        "name": "取得指定縣市",
+        "func": "var qryZone = env.get('指定縣市');\nvar info;\nif(typeof msg.data !='undefined' && msg.data!=''){\n    info = msg.payload[msg.data];\n}\nif (typeof info == 'undefined') {\n    info = msg.payload[qryZone];\n}\nmsg.payload = info;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a3a2a52f0a6c9a59",
+        "type": "change",
+        "z": "78b240a19274d8dc",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "data",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "5ee3f2e35f593908"
+            ]
+        ]
+    },
+    {
+        "id": "5d9259fc569bfc11",
+        "type": "http request",
+        "z": "d636f9e112c0b0b9",
+        "name": "取得回傳結果",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 680,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bdc9b5e391237df7",
+        "type": "function",
+        "z": "d636f9e112c0b0b9",
+        "name": "取得轉址Url",
+        "func": "global.set('sheetPosting', false);\nmsg.url = msg.responseUrl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 220,
+        "wires": [
+            [
+                "5d9259fc569bfc11"
+            ]
+        ]
+    },
+    {
+        "id": "fa3fa47f49c847eb",
+        "type": "switch",
+        "z": "d636f9e112c0b0b9",
+        "name": "驗證正常結束",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "405",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 500,
+        "y": 160,
+        "wires": [
+            [
+                "bdc9b5e391237df7"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "86b2513dca2ea969",
+        "type": "http request",
+        "z": "d636f9e112c0b0b9",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "fa3fa47f49c847eb"
+            ]
+        ]
+    },
+    {
+        "id": "78e18f7e08350886",
+        "type": "function",
+        "z": "d636f9e112c0b0b9",
+        "name": "createMsg",
+        "func": "msg.url = env.get(\"scriptId\");\nif (global.get('sheetPosting')) {\n    return [null,msg];\n} else {\n    global.set('sheetPosting',true);\n    msg.payload = {\n        \"header\": {\n            \"sheetUrl\": env.get(\"sheetUrl\"),\n            \"sheetName\": env.get(\"sheetName\"),\n            \"append\": env.get(\"append\"),\n            \"sheetRange\": [env.get(\"startRow (1..n)\"), env.get('startCol (1..n)'), env.get('rows'), env.get('cols')]\n        },\n        \"body\": {\n            \"rowList\": msg.payload\n        }\n    }\n    return [msg,null];\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "// 部署節點後，此處添加的代碼將運行一次。 \nglobal.set(\"sheetPosting\",false);",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "86b2513dca2ea969"
+            ],
+            [
+                "cf1eca3650e1d495"
+            ]
+        ]
+    },
+    {
+        "id": "cf1eca3650e1d495",
+        "type": "delay",
+        "z": "d636f9e112c0b0b9",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "78e18f7e08350886"
+            ]
+        ]
+    },
+    {
+        "id": "51a5ce632021df06",
+        "type": "http request",
+        "z": "259907a7c748c6e4",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "af6c4a03d5ed50e1",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 380,
         "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "41e1b9095f7e7951",
+        "type": "function",
+        "z": "259907a7c748c6e4",
+        "name": "info",
+        "func": "var scriptId = env.get('scriptId');\nvar sheetName = env.get('sheetName');\nvar sheetUrl = env.get('sheetUrl');\nmsg.url = scriptId+\"?sheetName=\"+sheetName+\"&sheetUrl=\"+sheetUrl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 80,
+        "wires": [
+            [
+                "51a5ce632021df06"
+            ]
+        ]
+    },
+    {
+        "id": "80626431d8f4b292",
+        "type": "daemon",
+        "z": "3ece654c0b7fdb3a",
+        "name": "Train",
+        "command": "bash",
+        "args": "",
+        "autorun": true,
+        "cr": true,
+        "redo": false,
+        "op": "string",
+        "closer": "SIGKILL",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "eda485e5b34f8d81"
+            ],
+            [
+                "6777f608d68fdfea"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0ee91e2f9355321c",
+        "type": "template",
+        "z": "3ece654c0b7fdb3a",
+        "name": "shell",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\necho '-=-=-=-=-=-= script start =-=-=-=-=-=-=-=-=-=-' \ncd /data/{{jobHome}}/maix_train\n\nif [ {{db.modelType}} == \"object\" ]\nthen\n    python3 ../convertDetectorDataset.py ../kmodels/project.tm.datasets ../kmodels/project.tm.out_datasets\n    python3 train.py -t detector -d ../kmodels/project.tm.out_datasets train\n    python3 ../getKmodel.py ../kmodels/project.tm\nelse\n    python3 train.py -t classifier -d ../kmodels/project.tm.datasets train\n    python3 ../getKmodel.py ../kmodels/project.tm\n    tensorflowjs_converter --input_format=keras ./out/m.tflite.h5 ../kmodels/\nfi\n\ncp ../kmodels/project.tm.kmodel ../kmodels/model.kmodel\nzip ../kmodels/model.kfpkg ../flash-list.json ../kmodels/project.tm.kmodel ../kmodels/model.kmodel\n\n# remove datasets\nrm -rf /data/{{jobHome}}/kmodels/project.tm.datasets\n\necho '-=-=-=-=-=-= script end =-=-=-=-=-=-=-'\n",
+        "output": "str",
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "80626431d8f4b292"
+            ]
+        ]
+    },
+    {
+        "id": "eda485e5b34f8d81",
+        "type": "switch",
+        "z": "3ece654c0b7fdb3a",
+        "name": "完成訓練",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "else"
+            },
+            {
+                "t": "cont",
+                "v": "= script end =",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 460,
+        "y": 200,
+        "wires": [
+            [
+                "9f6b8f3a62dee93a"
+            ],
+            [
+                "bc14f006aeaf2379"
+            ]
+        ]
+    },
+    {
+        "id": "6777f608d68fdfea",
+        "type": "function",
+        "z": "3ece654c0b7fdb3a",
+        "name": "Filter",
+        "func": "var trainJob = flow.get('$parent.trainJob');\nvar ignoreMsg = [\n    ' - [INFO]:',\n    'libcudart.so.11.0: cannot open',\n    '/dev/nvidia0 does not exist',\n    \"Could not load dynamic library 'libcuda.so.1'\",\n    'Library (oneDNN) to use the following CPU',\n    'Number of eligible GPUs',\n    'save model as',\n    'Starting new session',\n    'function_optimizer did nothing.',\n    'Ignored drop_control_dependency.',\n    'set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.',\n    'success: out_dir:',\n    'OK, task complete',\n    'pack result to zip file',\n    'if you do not have a GPU',\n    'progress: 100%, task complete',\n    'copy template files',\n    'generate report image',\n    'train ok',\n    'train end',\n    'train epoch end',\n    'epoch ',\n    'Epoch ',\n    'Optimization Passes are enabled',\n    'featurewise_std_normalization',\n    'The `lr` argument is deprecated,',\n    'no GPU, will use [CPU]',\n    'start train',\n    'train, datasets dir',\n    'Sets are not currently considered sequences',\n    'step - loss:',\n    'failed call to cuInit:',\n    'Ignored output_format',\n    'Error: No such container:',\n    'INFO:logger:',\n    'qemu-x86_64: Could not open',\n    'Status: success: OK.',\n    'kernel driver does not appear to be running on this host',\n    'Could not open',\n    'TF_ENABLE_ONEDNN_OPTS=0',\n    'version does not exist',\n    '/proc/driver/nvidia/version does not exist',\n    'Running initialization',\n    'Reading SavedModel',\n    'Reading meta graph with tags',\n    'These functions will not be',\n    'Restoring SavedModel bundle',\n    'optimization pass is not enabled',\n    'Could not load dynamic library',\n    'Unable to register cuBLAS factory',\n    'Cannot dlopen some TensorRT libraries.',\n    'Corrupt JPEG data: premature end of data segment',\n    'successful NUMA node read from SysFS',\n    'NVIDIA GeForce RTX 2080 Ti',\n    'save tfilte to',\n    'is deprecated',\n    'Loaded cuDNN version 8500',\n    'Start cannot spawn child process',\n    'No training configuration found in the save file',\n    'Init node conv1/kernel/Assign',\n    'This message will be only logged once'\n]\n\nvar include = 0;\nfor (var i = 0; i < ignoreMsg.length; i++) {\n    if (msg.payload.indexOf(ignoreMsg[i]) >= 0) {\n        ++include;\n        break;\n    }\n}\nif (include == 0) {\n    msg.status = {\n        fill: \"red\",\n        shape: \"dot\",\n        text: msg.payload\n    };\n    msg.id = trainJob.id; //update db\n    msg.payload = {\n        'notifyEmail': trainJob.postData['notifyEmail'],\n        'err': msg.payload,\n        'job': {\n            'home': trainJob.jobHome,\n            'state': trainJob.jobState\n        }\n    }\n    node.send(msg);\n}\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "54f8272d4e749825"
+            ]
+        ]
+    },
+    {
+        "id": "9f6b8f3a62dee93a",
+        "type": "function",
+        "z": "3ece654c0b7fdb3a",
+        "name": "進度",
+        "func": "\nvar trainJob = flow.get('$parent.trainJob');\ntrainJob.progress += 1.0 / (15*40); // msg * epochs\nvar percent = trainJob.progress > 0.9 ? 0.9 : trainJob.progress;\npercent = parseInt(percent * 1000) / 10.0;\nvar info = \"進度: \" + percent + \"%\";\ntrainJob.jobState = parseInt(percent) / 100.0;\nnode.warn(info);\n// const matched = msg.payload.match(/Epoch \\d+\\/\\d+/)\n\n// if (matched.length > 0) {\n//     const [at, total] = matched[0].replace('Epoch ', '').split('/').map(str => parseInt(str, 10));\n//     trainJob.progress = (at/total * 100) \n    \n// } else {\n//     trainJob.progress += 0.01\n// }\n// info = \"進度: \" + trainJob.progress.toFixed(2) + '%'\n\nreturn [\n    {   // std output\n        payload: {\n            'notifyEmail': trainJob.postData['notifyEmail'],\n            'msg': info,\n            'job': {\n                'modelName':trainJob.modelName,\n                'home': trainJob.jobHome,\n                'state': trainJob.jobState,\n                'info': 'training'\n            }\n        }\n    },\n    {   // msg state\n        payload: info,\n        status: {\n            fill: \"green\",\n            shape: \"dot\",\n            text: info\n        }\n    }    \n];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "057dc3aa90b7fc82",
+        "type": "postgresql",
+        "z": "3ece654c0b7fdb3a",
+        "name": "Update",
+        "query": "UPDATE \"models\" SET\n\"status\" = 'READY',\n\"update_time\" = timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)),\n\"anchor\" = '{{{msg.anchor}}}',\n\"classes\" = '{{{msg.classes}}}'\nWHERE \"id\" = '{{{msg.id}}}';",
+        "postgreSQLConfig": "a98062b2d10c9fd8",
+        "split": false,
+        "rowsPerMsg": "10",
+        "outputs": 1,
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "32957a715ab32b1d"
+            ]
+        ]
+    },
+    {
+        "id": "54594fb12d8b938a",
+        "type": "comment",
+        "z": "3ece654c0b7fdb3a",
+        "name": "訓練模型",
+        "info": "",
+        "x": 100,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bc14f006aeaf2379",
+        "type": "function",
+        "z": "3ece654c0b7fdb3a",
+        "name": "S3 upload",
+        "func": "function log(txt) { msg.log = txt; node.done(); delete msg.log; }\n\nvar trainJob = flow.get('$parent.trainJob');\nvar s3_upload = flow.get('s3_upload');\n\nvar copyPath = '/data/' + trainJob.jobHome + '/kmodels';\n\nlog('\"-=-=Uploading... =-=-\"');\n//log(\"skip update for TEST...\");\n\nawait s3_upload.uploadModel(copyPath, 'vision-api/models', trainJob.id);\n\nlog('\"-=-=-Upload completed. -=-=-\"');\nnode.warn(\"-=-=-Upload completed. -=-=-\");\n\nconst labelsPath = '/data/' + trainJob.jobHome + '/kmodels/project.tm.labels.txt';\nconst anchorPath = '/data/' + trainJob.jobHome + '/kmodels/project.tm.anchor.txt';\n\nconst classes = JSON.parse(msg.db.classes)\nconst labels = JSON.parse(fs.readFileSync(labelsPath, 'utf8').replace('labels = ', ''));\n\nlet anchor = null;\nif (fs.existsSync(anchorPath)) {\n    anchor = JSON.parse(fs.readFileSync(anchorPath, 'utf8'))\n}\n\nclasses.sort((a, b) => labels.indexOf(a.name) - labels.indexOf(b.name));\n\nfs.rmSync('/data/' + trainJob.jobHome + '/kmodels', { recursive: true, force: true });\n\nmsg = {\n    id: trainJob.id, //update db\n    status: {        //update status\n        fill: \"green\",\n        shape: \"dot\",\n        text: \"完成訓練\"\n    },\n    anchor: JSON.stringify(anchor),\n    classes: JSON.stringify(classes)\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "var config = {\n    \"accessKeyId\": env.get(\"accessKeyId\"),\n    \"secretAccessKey\": env.get(\"secretAccessKey\"),\n    region: env.get(\"region\"),\n    bucket: env.get(\"bucket\")\n};\n\nclass S3upload {\n    constructor(config) {\n        this.config = config;\n        this.s3 = new AWS.S3(config);\n    }\n\n    async uploadModel(srcPath, modelPath, modelId) {\n        modelPath = modelPath + \"/\" + modelId;\n        console.log(\"modelPath:\", modelPath);\n        await this.upload(srcPath, modelPath);\n    }\n\n    async upload(srcPath, desPath) {\n        var self = this;\n        var files = fs.readdirSync(srcPath);\n        for (var i = 0; i < files.length; i++) {\n            if (fs.lstatSync(srcPath + \"/\" + files[i]).isFile()) {\n                var data = fs.readFileSync(srcPath + \"/\" + files[i]);\n                const params = {\n                    Bucket: self.config.bucket,\n                    Key: desPath + \"/\" + files[i],\n                    //Body: JSON.stringify(data, null, 2)\n                    Body: data\n                };\n                console.log(\"upload \" + desPath + \"/\" + files[i]);\n                await self.s3upload(params);\n            }\n        }\n    }\n\n    async s3upload(params) {\n        return new Promise(resolve => {\n            this.s3.upload(params, function (s3Err, data) {\n                if (s3Err) throw s3Err\n                console.log(`File uploaded successfully at ${data.Location}`);\n                resolve(true);\n            });\n        });\n    }\n}\n\nflow.set('s3_upload', new S3upload(config));",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "Hashids",
+                "module": "hashids"
+            },
+            {
+                "var": "uuid",
+                "module": "uuid"
+            },
+            {
+                "var": "fs",
+                "module": "fs"
+            },
+            {
+                "var": "AWS",
+                "module": "aws-sdk"
+            }
+        ],
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "057dc3aa90b7fc82"
+            ]
+        ]
+    },
+    {
+        "id": "d5618f129a43c751",
+        "type": "flogger",
+        "z": "3ece654c0b7fdb3a",
+        "name": "log",
+        "logfile": "",
+        "inputchoice": "object",
+        "inputobject": "payload",
+        "inputobjectType": "msg",
+        "inputmoustache": "Recieved payload {{payload}} and topic {{topic}}",
+        "loglevel": "INFO",
+        "logconfig": "0a04a7be3ffe5bcc",
+        "sendpane": false,
+        "x": 510,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "88974555a546717c",
+        "type": "function",
+        "z": "3ece654c0b7fdb3a",
+        "name": "log",
+        "func": "msg.logfile = env.get('jobHome') + \".log\";\nif (\"log\" in msg) {\n    msg.payload = msg.log;\n    delete msg.log;\n}\nnode.send(msg);\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "d5618f129a43c751"
+            ]
+        ],
+        "outputLabels": [
+            "jobReady"
+        ]
+    },
+    {
+        "id": "31bdf570a0c497c9",
+        "type": "complete",
+        "z": "3ece654c0b7fdb3a",
+        "name": "",
+        "scope": [
+            "9f6b8f3a62dee93a",
+            "bc14f006aeaf2379",
+            "32957a715ab32b1d"
+        ],
+        "uncaught": false,
+        "x": 130,
+        "y": 560,
+        "wires": [
+            [
+                "88974555a546717c"
+            ]
+        ]
+    },
+    {
+        "id": "b013b58e096030ae",
+        "type": "catch",
+        "z": "3ece654c0b7fdb3a",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 130,
+        "y": 500,
+        "wires": [
+            [
+                "54f8272d4e749825"
+            ]
+        ]
+    },
+    {
+        "id": "54f8272d4e749825",
+        "type": "function",
+        "z": "3ece654c0b7fdb3a",
+        "name": "log",
+        "func": "msg.logfile = env.get('jobHome') + \".log\";\nmsg.loglevel = 'ERROR';\nif (\"log\" in msg) {\n    msg.payload = msg.log;\n    delete msg.log;\n}\nnode.send(msg);\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 500,
+        "wires": [
+            [
+                "d5618f129a43c751"
+            ]
+        ],
+        "outputLabels": [
+            "jobReady"
+        ]
+    },
+    {
+        "id": "32957a715ab32b1d",
+        "type": "function",
+        "z": "3ece654c0b7fdb3a",
+        "name": "result",
+        "func": "node.log('traing result')\nfunction log(txt) { msg.log = txt; node.done(); delete msg.log; }\nvar trainJob = flow.get('$parent.trainJob');\n\nvar info = \"完成訓練\";\nvar endTime = new Date().getTime();\ntrainJob.jobState = 0;\n\nmsg = {   // std output\n    payload: {\n        'notifyEmail': trainJob.postData['notifyEmail'],\n        'msg': info,\n        'job': {\n            'modelName': trainJob.postData.name,\n            \"datasets\":\"\"+trainJob.datasetList,\n            'imgs': trainJob.imgs,\n            'home': trainJob.jobHome,\n            'startTime': trainJob.startTime,\n            'endTime': endTime,\n            'state': trainJob.jobState,\n            'info': info\n        },\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 380,
+        "wires": [
+            []
+        ],
+        "outputLabels": [
+            "更新成功"
+        ]
+    },
+    {
+        "id": "a8abb62b2e1c0b3b",
+        "type": "mqtt out",
+        "z": "5c52e3f7e50cd19e",
+        "name": "",
+        "topic": "",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e607e1711e0f728f",
+        "x": 330,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d46210587af5db79",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "setting",
+        "func": "// 保存 http 物件 ( 在 msg 物件內 )\nvar reqKey = msg.payload.notifyEmail + \"/\" + msg.payload.name;\nflow.set(reqKey, msg);\nmsg.topic = \"webai/\" + msg.jobHome + \"/req\";\nmsg.payload.reqKey = reqKey;\nfor (var key in msg.req.query) {\n    msg.payload[key] = msg.req.query[key];\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "a8abb62b2e1c0b3b",
+                "bf40496f3b5a8c9d",
+                "8962efa2ebd59f8c",
+                "2f5a9d0215f6ecb8",
+                "3be850a6c484fdad"
+            ]
+        ]
+    },
+    {
+        "id": "435475b17d065378",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "set res",
+        "func": "var reqKey = msg.payload.reqKey;\n//node.warn(\">>>\" + reqKey);\nvar http = flow.get(reqKey);\ntry {\n    //node.warn(\">>>\" + reqKey);\n    msg.req = http.req;\n    msg.res = http.res;\n    //node.warn(\"<<set res OK>>\");\n    return msg;\n} catch (e) {\n    node.warn(\"my warning:\" + e);\n    msg.payload = \"err:\" + e;\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "3c89a4899f70f988"
+            ]
+        ]
+    },
+    {
+        "id": "8a589a60ad139970",
+        "type": "mqtt in",
+        "z": "5c52e3f7e50cd19e",
+        "name": "mqtt-stdout",
+        "topic": "",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 530,
+        "y": 500,
+        "wires": [
+            [
+                "8da46d27840e167d",
+                "b05308c9b1951d75"
+            ]
+        ]
+    },
+    {
+        "id": "3be850a6c484fdad",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "stdout",
+        "func": "msg.action = \"subscribe\";\nmsg.topic = \"webai/\" + msg.jobHome + \"/stdout\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 500,
+        "wires": [
+            [
+                "8a589a60ad139970"
+            ]
+        ]
+    },
+    {
+        "id": "4505d05ed9bc42cd",
+        "type": "mqtt in",
+        "z": "5c52e3f7e50cd19e",
+        "name": "mqtt-completed",
+        "topic": "",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 540,
+        "y": 380,
+        "wires": [
+            [
+                "8da46d27840e167d",
+                "b05308c9b1951d75",
+                "31af5f25c675932b"
+            ]
+        ]
+    },
+    {
+        "id": "2f5a9d0215f6ecb8",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "completed",
+        "func": "msg.action = \"subscribe\";\nmsg.topic = \"webai/\" + msg.jobHome + \"/completed\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "4505d05ed9bc42cd"
+            ]
+        ]
+    },
+    {
+        "id": "a386711192c142d0",
+        "type": "mqtt in",
+        "z": "5c52e3f7e50cd19e",
+        "name": "mqtt-stderr",
+        "topic": "",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "89b3377028a316a4"
+            ]
+        ]
+    },
+    {
+        "id": "8962efa2ebd59f8c",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "stderr",
+        "func": "msg.action = \"subscribe\";\nmsg.topic = \"webai/\" + msg.jobHome + \"/stderr\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "a386711192c142d0"
+            ]
+        ]
+    },
+    {
+        "id": "f43117f96714793f",
+        "type": "mqtt in",
+        "z": "5c52e3f7e50cd19e",
+        "name": "",
+        "topic": "",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 510,
+        "y": 140,
+        "wires": [
+            [
+                "435475b17d065378"
+            ]
+        ]
+    },
+    {
+        "id": "bf40496f3b5a8c9d",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "res",
+        "func": "msg.qos = 1;\nmsg.action = \"subscribe\";\nmsg.topic = \"webai/\" + msg.jobHome + \"/res\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "f43117f96714793f"
+            ]
+        ]
+    },
+    {
+        "id": "8fd168e455501207",
+        "type": "inject",
+        "z": "5c52e3f7e50cd19e",
+        "name": "",
+        "props": [
+            {
+                "p": "status.fill",
+                "v": "green",
+                "vt": "str"
+            },
+            {
+                "p": "status.shape",
+                "v": "dot",
+                "vt": "str"
+            },
+            {
+                "p": "status.text",
+                "v": "Ready",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 890,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8da46d27840e167d",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "report",
+        "func": "msg.payload = msg.payload.msg;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b05308c9b1951d75",
+        "type": "websocket out",
+        "z": "5c52e3f7e50cd19e",
+        "name": "",
+        "server": "14d16f0193a56b6d",
+        "client": "",
+        "x": 840,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "3c89a4899f70f988",
+        "type": "http response",
+        "z": "5c52e3f7e50cd19e",
+        "name": "response",
+        "statusCode": "200",
+        "headers": {},
+        "x": 880,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "89b3377028a316a4",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "丟出例外",
+        "func": "throw msg.payload;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db5935d3a3571189",
+        "type": "subflow:d636f9e112c0b0b9",
+        "z": "5c52e3f7e50cd19e",
+        "name": "",
+        "env": [
+            {
+                "name": "sheetUrl",
+                "value": "https://docs.google.com/spreadsheets/d/1qoRUVQ0kuC0cY1IFHGaLwF-Q5ANw_IwoCEsgImvGmxM/edit#gid=0",
+                "type": "str"
+            },
+            {
+                "name": "sheetName",
+                "value": "v1",
+                "type": "str"
+            },
+            {
+                "name": "append",
+                "value": "true",
+                "type": "bool"
+            }
+        ],
+        "x": 890,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31af5f25c675932b",
+        "type": "function",
+        "z": "5c52e3f7e50cd19e",
+        "name": "row",
+        "func": "var trainJob = flow.get('$parent.trainJob');\nfunction timeCvt(UNIX_timestamp) {\n    var a = new Date(UNIX_timestamp + 8 * 60 * 60 * 1000);\n    var months = ['01', '02', '03', '04', '05', '06',\n        '07', '08', '09', '10', '11', '12'];\n    var year = a.getFullYear();\n    var month = months[a.getMonth()];\n    var date = a.getDate();\n    var hour = a.getHours();\n    var min = a.getMinutes();\n    var sec = a.getSeconds();\n    var time = year + '/' + month + '/' + date + ' ' + hour + ':' + min + ':' + sec;\n    return time;\n}\n\nvar row = [];\nrow.push(msg.payload.notifyEmail);\nrow.push(msg.payload.job.modelName);\nrow.push(msg.payload.job.datasets);\nrow.push(msg.payload.job.imgs);\nrow.push(msg.payload.job.home);\nrow.push(timeCvt(msg.payload.job.startTime));\nrow.push(timeCvt(msg.payload.job.endTime));\nvar spendTime = (msg.payload.job.endTime - msg.payload.job.startTime) / 1000.0;\nrow.push(parseInt(spendTime * 100) / 100.0);\nrow.push(msg.payload.job.state);\nrow.push(msg.payload.job.info);\n\nmsg.payload = [row];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "db5935d3a3571189"
+            ]
+        ]
+    },
+    {
+        "id": "ea60f06bdaead8f5",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "hashkey",
+        "func": "flow.set(\"reqKey\",msg.payload.reqKey);\nmsg.req = {\n    query: {\n        cmd: msg.payload.cmd,\n        hashkey: msg.payload.hashkey,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "49387fd7387e7443"
+            ]
+        ]
+    },
+    {
+        "id": "866fe3861ab4183e",
+        "type": "mqtt in",
+        "z": "1e831e2fcbd588fe",
+        "name": "",
+        "topic": "",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "ea60f06bdaead8f5"
+            ]
+        ]
+    },
+    {
+        "id": "bac68b07494c7404",
+        "type": "inject",
+        "z": "1e831e2fcbd588fe",
+        "name": "設定",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "192e7ddb9c7de63a"
+            ]
+        ]
+    },
+    {
+        "id": "192e7ddb9c7de63a",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "topic",
+        "func": "msg.action = \"subscribe\";\nmsg.topic = \"webai/\" + env.get(\"jobHome\") + \"/req\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "866fe3861ab4183e"
+            ]
+        ]
+    },
+    {
+        "id": "7bb0b7c6047d544f",
+        "type": "mqtt out",
+        "z": "1e831e2fcbd588fe",
+        "name": "",
+        "topic": "",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e607e1711e0f728f",
+        "x": 790,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4584c66bb4f5337d",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "/res",
+        "func": "msg.topic =  \"webai/\" + env.get(\"jobHome\") + \"/res\";\nmsg.payload.reqKey = flow.get('reqKey');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 220,
+        "wires": [
+            [
+                "7bb0b7c6047d544f"
+            ]
+        ]
+    },
+    {
+        "id": "49387fd7387e7443",
+        "type": "subflow:96e277033a13dd3a",
+        "z": "1e831e2fcbd588fe",
+        "name": "",
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "4584c66bb4f5337d"
+            ],
+            [
+                "1b01c6a06194cf4c"
+            ],
+            [
+                "2930dc0a73a61bea"
+            ],
+            [
+                "933a5102cb0b281e"
+            ],
+            [
+                "faf2a3f8a9a90e6b"
+            ]
+        ]
+    },
+    {
+        "id": "1b01c6a06194cf4c",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "/stdout",
+        "func": "msg.topic =  \"webai/\" + env.get(\"jobHome\") \n+ \"/stdout\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "7bb0b7c6047d544f",
+                "f427e9241adc559e"
+            ]
+        ]
+    },
+    {
+        "id": "933a5102cb0b281e",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "/stderr",
+        "func": "msg.topic =  \"webai/\" + env.get(\"jobHome\") + \"/stderr\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 340,
+        "wires": [
+            [
+                "7bb0b7c6047d544f"
+            ]
+        ]
+    },
+    {
+        "id": "2930dc0a73a61bea",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "/completed",
+        "func": "msg.topic =  \"webai/\" + env.get(\"jobHome\") \n    + \"/completed\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "7bb0b7c6047d544f",
+                "f427e9241adc559e"
+            ]
+        ]
+    },
+    {
+        "id": "f427e9241adc559e",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "status",
+        "func": "msg.payload = msg.payload.msg;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e339f870026f44fc",
+        "type": "inject",
+        "z": "1e831e2fcbd588fe",
+        "name": "",
+        "props": [
+            {
+                "p": "status.fill",
+                "v": "green",
+                "vt": "str"
+            },
+            {
+                "p": "status.shape",
+                "v": "dot",
+                "vt": "str"
+            },
+            {
+                "p": "status.text",
+                "v": "Ready",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 790,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "faf2a3f8a9a90e6b",
+        "type": "function",
+        "z": "1e831e2fcbd588fe",
+        "name": "/state",
+        "func": "msg.topic =  \"webai/\" + env.get(\"jobHome\") + \"/state\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "7bb0b7c6047d544f"
+            ]
+        ]
+    },
+    {
+        "id": "117bfeb0fe8ec080",
+        "type": "function",
+        "z": "7bdfbab50f290d31",
+        "name": "pub",
+        "func": "msg.topic = \"webai/\" + msg.topicName + \"/req\";\nmsg.payload = {\n    cmd: 'qry',\n    hashkey: '874389e56b2af78523547989eba72d43'\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "65b868ca05470397"
+            ]
+        ]
+    },
+    {
+        "id": "65b868ca05470397",
+        "type": "delay",
+        "z": "7bdfbab50f290d31",
+        "name": "0.1 sec",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 520,
+        "y": 80,
+        "wires": [
+            [
+                "d0e9602ba5a4794e"
+            ]
+        ]
+    },
+    {
+        "id": "ca2bcbe521b055b8",
+        "type": "delay",
+        "z": "7bdfbab50f290d31",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "2c3e74add19cae7a",
+                "28a2060c9b7f1df9"
+            ]
+        ]
+    },
+    {
+        "id": "2c3e74add19cae7a",
+        "type": "function",
+        "z": "7bdfbab50f290d31",
+        "name": "check",
+        "func": "var cb = flow.get('qryCallback');\n\nif (cb != null) {\n    msg.payload = cb.payload.job;\n    return msg;\n} else {\n    msg.payload = \"unknown\";\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7782d5bad8d65d63",
+        "type": "function",
+        "z": "7bdfbab50f290d31",
+        "name": "topic",
+        "func": "flow.set(\"qryCallback\",null);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "117bfeb0fe8ec080",
+                "4e6a6cbb42ae8d80",
+                "ca2bcbe521b055b8"
+            ]
+        ]
+    },
+    {
+        "id": "d31d5ec8242b0b15",
+        "type": "mqtt in",
+        "z": "7bdfbab50f290d31",
+        "name": "/state",
+        "topic": "",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "2f09bc57a77bfdc0"
+            ]
+        ]
+    },
+    {
+        "id": "2f09bc57a77bfdc0",
+        "type": "function",
+        "z": "7bdfbab50f290d31",
+        "name": "save msg",
+        "func": "flow.set('qryCallback', msg);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e6a6cbb42ae8d80",
+        "type": "function",
+        "z": "7bdfbab50f290d31",
+        "name": "topic",
+        "func": "msg.action = \"subscribe\";\nmsg.topic = \"webai/\" + msg.topicName + \"/state\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "d31d5ec8242b0b15"
+            ]
+        ]
+    },
+    {
+        "id": "d0e9602ba5a4794e",
+        "type": "mqtt out",
+        "z": "7bdfbab50f290d31",
+        "name": "/req",
+        "topic": "",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e607e1711e0f728f",
+        "x": 670,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "28a2060c9b7f1df9",
+        "type": "function",
+        "z": "7bdfbab50f290d31",
+        "name": "unsub",
+        "func": "msg.action = \"unsubscribe\";\nmsg.topic = true;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "d31d5ec8242b0b15"
+            ]
+        ]
+    },
+    {
+        "id": "a0207992115c638f",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "處理命令",
+        "func": "var trainJob = flow.get('trainJob');\ntrainJob.jobHome = env.get('jobHome');\ntrainJob.jobHomePath = env.get('jobHomePath') + '/' + trainJob.jobHome;\nmsg.logfile = env.get('jobHome') + \".log\";\n\nvar query = msg.req.query;\n\nif (query.cmd == undefined) {\n    query.cmd = 'train';\n}\n\nif (query.cmd == 'train' && trainJob.jobState == 0) {\n    // [ {ownerId , name , datasetId , completed} ...]\n    trainJob.progress = 0;\n    trainJob.jobState = 1; // start\n    trainJob.hashKey = msg.req.query.hashkey;\n    trainJob.startTime = new Date().getTime();\n    trainJob.parsePostData(msg.payload);\n    return [msg, msg, msg];\n}\nelse if (query.cmd == 'qry') {\n    return [null, msg, null];\n}\nelse {\n    return [msg, null, null];\n}",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "class TrainJob {\n    constructor() {\n        this.idHashids = new Hashids('X5lM3VPyBvm', 32, '0123456789abcdef');\n        this.jobState = 0;\n        this.progress = 0;\n    }\n\n    createId() {\n        var q = this.idHashids.encode([this.ownerId, Date.now()]);\n        q = q.slice(0, 8) + \"-\" + q.slice(8, 12) + \"-\" + q.slice(12, 16) \n            + \"-\" + q.slice(16, 20) + \"-\" + q.slice(20);\n        return q;\n    }\n    \n    parsePostData(data) {\n        this.postData = data;\n        this.modelName = data.name;\n        this.ownerId = this.idHashids.decode(this.hashKey)[0];\n        this.id = this.createId();\n        var dataset = data.classes;\n        var list = new Array();\n        for (var i = 0; i < dataset.length; i++) {\n            var allData = dataset[i]['datasets'];\n            for (var j = 0; j < allData.length; j++) {\n                var data = dataset[i]['datasets'][j];\n                list.push({\n                    'jobHome': env.get('jobHome'),\n                    'jobHomePath': env.get('jobHomePath'),\n                    'ownerId': this.ownerId,\n                    'name': dataset[i]['name'],\n                    'datasetId': data,\n                    'completed': ((i + 1) == dataset.length)\n                })\n            }\n        }\n        this.datasets = list;\n    }\n}\nflow.set(\"trainJob\", new TrainJob());",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "Hashids",
+                "module": "hashids"
+            }
+        ],
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "e3de133a7d4293db"
+            ],
+            [
+                "0eb041618ddfc5b6"
+            ],
+            [
+                "bd268d7ff1ea77c2"
+            ]
+        ],
+        "outputLabels": [
+            "回傳訊息",
+            "查詢回報",
+            "開始訓練"
+        ]
+    },
+    {
+        "id": "234bb7031b24471c",
+        "type": "comment",
+        "z": "96e277033a13dd3a",
+        "name": "執行說明",
+        "info": "接收 request \n=======\n1. 插入一筆資料到 models table\n2. copy datasets 到工作目錄\n3. 開始訓練...\n4. 轉換模型...\n5. copy 結果檔案到 s3 目錄下",
+        "x": 100,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "21dba5312c1e8439",
+        "type": "subflow:3ece654c0b7fdb3a",
+        "z": "96e277033a13dd3a",
+        "name": "",
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [],
+            [],
+            [
+                "0eb041618ddfc5b6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cf7598126b46d457",
+        "type": "inject",
+        "z": "96e277033a13dd3a",
+        "name": "Start",
+        "props": [
+            {
+                "p": "fill",
+                "v": "green",
+                "vt": "str"
+            },
+            {
+                "p": "shape",
+                "v": "dot",
+                "vt": "str"
+            },
+            {
+                "p": "text",
+                "v": "Ready",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 710,
+        "y": 260,
+        "wires": [
+            []
+        ],
+        "info": "    fill: \"green\", \n    shape: \"dot\", \n    text: \"Ready\" "
+    },
+    {
+        "id": "e7c6fd1c66dd7999",
+        "type": "complete",
+        "z": "96e277033a13dd3a",
+        "name": "開始執行",
+        "scope": [
+            "a0207992115c638f"
+        ],
+        "uncaught": false,
+        "x": 520,
+        "y": 520,
+        "wires": [
+            [
+                "1ccf291a8256cd72"
+            ]
+        ]
+    },
+    {
+        "id": "1ccf291a8256cd72",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "log",
+        "func": "msg.logfile = env.get('jobHome') + \".log\";\nvar tmp = msg.payload;\nmsg.payload = \" \"; node.send(msg);\nmsg.payload = \" \"; node.send(msg);\nmsg.payload = \" \"; node.send(msg);\nmsg.payload = \"-=-=-=-=-=-=-\"; node.send(msg);\nmsg.payload = \"-=  Start  =-\"; node.send(msg);\nmsg.payload = \"-=-=-=-=-=-=-\"; node.send(msg);\nmsg.payload = tmp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 520,
+        "wires": [
+            [
+                "cd418f9a15fe191f"
+            ]
+        ],
+        "outputLabels": [
+            "jobReady"
+        ]
+    },
+    {
+        "id": "5614093de6cdbe50",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "s3 download",
+        "func": "var dn = flow.get('s3_download');\nvar trainJob = flow.get('trainJob');\n\n//node.warn(\"check...\" + global.get('check_download').count);\nawait global.get('check_download').wait();\n//node.warn(\"exec...\");\n\nmsg.log = \"download datasets:\" + trainJob.datasets.length; node.done();\n\nvar downloadList = [];\ntrainJob['datasetList'] = [];\n\n// 用戶上傳的資料集\nfor (var i = 0; i < trainJob.datasets.length; i++) {\n    var dataset = trainJob.datasets[i];\n    var s3Path =\n        'vision-api/training-data/'\n        + dataset['ownerId'] + '/'\n        + dataset['datasetId'] + '/imgs';\n\n    var path = '/data/' + dataset['jobHome']\n        + '/kmodels/project.tm.datasets/'\n        + dataset['name'];\n\n    msg.log = \"s3Path:\" + s3Path; node.done();\n    msg.log = \"path:\" + path; node.done();\n\n    trainJob.datasetList.push(dataset['name']);\n\n    msg.log = 'download:[' + dataset['name'] + ']'; node.done();\n    downloadList.push(dn.downloadToPath(s3Path, path));\n}\n\nconst values = await Promise.all(downloadList);\n\nmsg.log = \"All download completed:[\" + values + \"]\"; node.done();\ntrainJob.imgs = \"[\" + values + \"]\";\ndelete msg.log;\n// start training\nmsg.jobHome = trainJob.jobHome;\nmsg.jobHomePath = trainJob.jobHomePath;\nnode.send(msg);\n//node.warn(\"EXIT...\" + global.get('check_download').count);\nawait global.get('check_download').exit();\n\nconsole.log('s3 download end')",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "var config = {\n    \"accessKeyId\": env.get(\"accessKeyId\"),\n    \"secretAccessKey\": env.get(\"secretAccessKey\"),\n    region: env.get(\"region\"),\n    bucket: env.get(\"bucket\")\n};\n\nclass CheckDownload {\n    constructor(maxConcurrent) {\n        this.count = 0;\n        this.maxConcurrent = maxConcurrent;\n        this.sleep = () => new Promise(r => setTimeout(r, 500));\n    }\n\n    async wait() {\n        var flag = false;\n        while (true) {\n            if (this.count >= this.maxConcurrent) {\n                if(!flag){\n                    //flag = true;\n                    node.warn(\"waiting...\" + this.count);\n                }\n                await this.sleep();\n            } else {\n                this.count++;\n                break;\n            }\n        }\n    }\n\n    async exit() {\n        this.count--;\n    }\n}\n\nclass S3download {\n    constructor(config) {\n        this.config = config;\n    }\n\n    async zipToFile(s3Path, filename) {\n        return new Promise(resolve => {\n            var zipper = new S3Zipper(this.config);\n            zipper.zipToFile({\n                s3FolderName: s3Path,\n                zipFileName: filename,\n                recursive: true\n            }, function (err, result) {\n                if (err)\n                    console.error(err);\n                //* for debug\n                else {\n                    console.log(result.zippedFiles.length);\n                    var lastFile = result.zippedFiles[result.zippedFiles.length - 1];\n                    if (lastFile) {\n                        console.log('last key ', lastFile.Key);\n                        resolve(true);\n                    }\n                } //*/\n            });\n        });\n    }\n\n    async unzipToDir(zipFile, path) {\n        var imgs = 0;\n        return new Promise(resolve => {\n            fs.createReadStream(zipFile)\n                .pipe(unzipper.Parse())\n                .on('entry', function (entry) {\n                    var fileName = entry.path;\n                    fileName = fileName.substring(fileName.lastIndexOf('/') + 1);\n                    const type = entry.type; // 'Directory' or 'File'\n                    console.log('create path:', path);\n                    if (type == 'File') {\n                        imgs++;\n                        fs.mkdirSync(path, { recursive: true });\n                        entry.pipe(fs.createWriteStream(path + \"/\" + fileName));\n                    }\n                    // entry.autodrain(); //skip\n                })\n                .on('close', function () {\n                    console.log(\"-=-=-=-=-=-=-\");\n                    console.log(\"Download OK:\", path);\n                    console.log(\"-=-=-=-=-=-=-\");\n                    resolve(imgs);\n                });\n        });\n    }\n\n    async downloadToPath(s3Path, localPath) {\n        var tmpFile = uuid.v4() + \".zip\";\n        await this.zipToFile(s3Path, tmpFile);\n        var imgAmt = await this.unzipToDir(tmpFile, localPath);\n        await fs.unlinkSync(tmpFile);\n        return imgAmt;\n    }\n}\nglobal.set('check_download', new CheckDownload(35));\nflow.set('s3_download', new S3download(config));",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "S3Zipper",
+                "module": "aws-s3-zipper"
+            },
+            {
+                "var": "unzipper",
+                "module": "unzipper"
+            },
+            {
+                "var": "uuid",
+                "module": "uuid"
+            },
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "21dba5312c1e8439"
+            ]
+        ]
+    },
+    {
+        "id": "daf2a999e725d118",
+        "type": "postgresql",
+        "z": "96e277033a13dd3a",
+        "name": "Insert",
+        "query": "INSERT INTO \"models\" (\n\"id\", \"name\", \"owner\", \"classes\", \"hyperparameters\", \n\"loss\", \"kfpkg\", \"shared\", \"create_time\", \"update_time\", \n\"source_model\", \"error\", \"status\", \"model_type\", \n\"object_model_id\", \"notify_email\", \"version\", \"anchor\")\nVALUES (\n'{{{msg.db.id}}}', '{{{msg.db.name}}}', '{{{msg.db.owner}}}', '{{{msg.db.classes}}}', '{{{msg.db.hyperparameters}}}',\nNULL, NULL, '0', timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)),\nNULL, NULL, 'TRAINING', '{{msg.db.modelType}}', \nNULL, '{{{msg.db.notify_email}}}','{{{msg.db.version}}}', NULL);",
+        "postgreSQLConfig": "8c7ab0ab44181b48",
+        "split": false,
+        "rowsPerMsg": "10",
+        "outputs": 1,
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "5614093de6cdbe50"
+            ]
+        ],
+        "info": "\nINSERT INTO \"models\" (\n\"id\", \"name\", \"owner\", \"classes\", \"hyperparameters\", \n\"loss\", \"kfpkg\", \"shared\", \"create_time\", \"update_time\", \n\"source_model\", \"error\", \"status\", \"model_type\", \n\"object_model_id\", \"notify_email\")\nVALUES (\n'fc28294b-4b8b-4415-bd0a-70032a0c693a', 'marty', '4', '{\"a\":\"abc\"}', '{\"a\":\"abc\"}', \nNULL, NULL, '0', timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), \nNULL, NULL, 'TRAINING', NULL, \nNULL, 'marty@kingkit101.com');"
+    },
+    {
+        "id": "bd268d7ff1ea77c2",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "存資料庫",
+        "func": "var trainJob = flow.get('trainJob');\nnode.warn('store database');\n// 更新資料庫 models\nmsg.db = {\n    id: trainJob.id,\n    name: trainJob.postData.name,\n    owner: trainJob.ownerId,\n    modelType: trainJob.postData.modelType,\n    classes: JSON.stringify(trainJob.postData.classes),\n    hyperparameters: JSON.stringify(trainJob.postData.hyperParameters),\n    notify_email: trainJob.postData.notifyEmail,\n    version: '2',\n}\n\nmsg.log = 'Insert into table [models]:'+JSON.stringify(msg.db);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "daf2a999e725d118"
+            ]
+        ]
+    },
+    {
+        "id": "cd418f9a15fe191f",
+        "type": "flogger",
+        "z": "96e277033a13dd3a",
+        "name": "log",
+        "logfile": "",
+        "inputchoice": "object",
+        "inputobject": "payload",
+        "inputobjectType": "msg",
+        "inputmoustache": "Recieved payload {{payload}} and topic {{topic}}",
+        "loglevel": "INFO",
+        "logconfig": "0a04a7be3ffe5bcc",
+        "sendpane": false,
+        "x": 830,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31744fbdde9a2af4",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "log",
+        "func": "msg.logfile = env.get('jobHome') + \".log\";\nif (\"log\" in msg) {\n    msg.payload = msg.log;\n    delete msg.log;\n}\nnode.send(msg);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 560,
+        "wires": [
+            [
+                "cd418f9a15fe191f"
+            ]
+        ],
+        "outputLabels": [
+            "jobReady"
+        ]
+    },
+    {
+        "id": "2f81aca3381ee84a",
+        "type": "complete",
+        "z": "96e277033a13dd3a",
+        "name": "執行過程",
+        "scope": [
+            "5614093de6cdbe50",
+            "daf2a999e725d118",
+            "bd268d7ff1ea77c2"
+        ],
+        "uncaught": false,
+        "x": 520,
+        "y": 560,
+        "wires": [
+            [
+                "31744fbdde9a2af4"
+            ]
+        ]
+    },
+    {
+        "id": "d06108cf90bce6c3",
+        "type": "catch",
+        "z": "96e277033a13dd3a",
+        "name": "發生異常",
+        "scope": [
+            "5614093de6cdbe50",
+            "daf2a999e725d118",
+            "bd268d7ff1ea77c2"
+        ],
+        "uncaught": false,
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "afee4fac7df920b7"
+            ]
+        ]
+    },
+    {
+        "id": "afee4fac7df920b7",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "log",
+        "func": "var trainJob = flow.get('trainJob');\nmsg.logfile = env.get('jobHome') + \".log\";\nmsg.loglevel = 'ERROR';\ntrainJob.jobState = 0;\n//var bnd = '\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n';\n//msg.payload = bnd + msg.payload + bnd;\nnode.send(msg);\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 600,
+        "wires": [
+            [
+                "cd418f9a15fe191f"
+            ]
+        ],
+        "outputLabels": [
+            "jobReady"
+        ]
+    },
+    {
+        "id": "e3de133a7d4293db",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "回傳 Job 狀態",
+        "func": "node.warn('trainJob.state');\nvar trainJob = flow.get('trainJob');\n\nmsg.payload = {\n    'job': {\n        'home': trainJob.jobHome,\n        'modelName': trainJob.modelName,\n        'state': trainJob.jobState,\n        'info': trainJob.progress == 0 ? 'ready' : 'busy'\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "class TrainJob {\n    constructor() {\n        this.idHashids = new Hashids('X5lM3VPyBvm', 32, '0123456789abcdef');\n        this.jobState = 0;\n        this.progress = 0;\n    }\n\n    createId() {\n        var q = this.idHashids.encode([this.ownerId, Date.now()]);\n        q = q.slice(0, 8) + \"-\" + q.slice(8, 12) + \"-\" + q.slice(12, 16) \n            + \"-\" + q.slice(16, 20) + \"-\" + q.slice(20);\n        return q;\n    }\n    \n    parsePostData(data) {\n        this.postData = data;\n        this.modelName = data.name;\n        this.ownerId = this.idHashids.decode(this.hashKey)[0];\n        this.id = this.createId();\n        var dataset = data.classes;\n        var list = new Array();\n        for (var i = 0; i < dataset.length; i++) {\n            var allData = dataset[i]['datasets'];\n            for (var j = 0; j < allData.length; j++) {\n                var data = dataset[i]['datasets'][j];\n                list.push({\n                    'jobHome': env.get('jobHome'),\n                    'jobHomePath': env.get('jobHomePath'),\n                    'ownerId': this.ownerId,\n                    'name': dataset[i]['name'],\n                    'datasetId': data,\n                    'completed': ((i + 1) == dataset.length)\n                })\n            }\n        }\n        this.datasets = list;\n    }\n}\nflow.set(\"trainJob\", new TrainJob());",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "Hashids",
+                "module": "hashids"
+            }
+        ],
+        "x": 600,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "outputLabels": [
+            "jobReady"
+        ]
+    },
+    {
+        "id": "0eb041618ddfc5b6",
+        "type": "function",
+        "z": "96e277033a13dd3a",
+        "name": "整理回報資訊",
+        "func": "var trainJob = flow.get('trainJob');\n\nmsg.payload = {\n    'job': {\n        'home': trainJob.jobHome,\n        'modelName': trainJob.modelName,\n        'state': trainJob.jobState,\n        'info': trainJob.jobState == 0 ? 'ready' : 'busy'\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8cbcecf5835af039",
+        "type": "inject",
+        "z": "75af274027ee97af",
+        "name": "更新",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "b5a7673b805f9e96",
+                "338725dafe35ab4b"
+            ]
+        ]
+    },
+    {
+        "id": "ca749f1ef65bd5a7",
+        "type": "mqtt in",
+        "z": "75af274027ee97af",
+        "name": "/state",
+        "topic": "webai/+/state",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e607e1711e0f728f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "c6dc271940a6f5c5"
+            ]
+        ]
+    },
+    {
+        "id": "f337672d511bea36",
+        "type": "mqtt out",
+        "z": "75af274027ee97af",
+        "name": "/req",
+        "topic": "",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e607e1711e0f728f",
+        "x": 530,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c6dc271940a6f5c5",
+        "type": "function",
+        "z": "75af274027ee97af",
+        "name": "update Jobs",
+        "func": "var topic = msg.topic;\nvar jobMgr = global.get('jobs');\n\nif (topic.endsWith('/state')){\n    var jobHome = msg.payload.job.home;\n    var state = msg.payload.job.state;\n    jobMgr.jobs[jobHome] = state;\n    node.send(msg);\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b5a7673b805f9e96",
+        "type": "function",
+        "z": "75af274027ee97af",
+        "name": "JobMgr",
+        "func": "// -1:unknown , 0:ready , 1:busy\nvar jobMgr = global.get('jobs');\n\nfor (var topic in jobMgr.jobs) {\n    msg.topic = \"webai/\" + topic + \"/req\";\n    msg.payload = {\n        cmd: 'qry',\n        hashkey: '874389e56b2af78523547989eba72d43'\n    }\n    jobMgr.jobs[topic] = -1;\n    node.send(msg);\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "class JobManager {\n    constructor() {\n        this.jobs = {\n            \"luxury-job01:gpu\": -1,\n            \"luxury-job01\": -1,\n            \"luxury-job02\": -1,\n            \"luxury-job03\": -1,\n            // \"luxury-job04\": -1,\n            // \"luxury-job05\": -1,\n            // \"luxury-job06\": -1,\n            // \"luxury-job07\": -1,\n            // \"luxury-job08\": -1,\n            // \"luxury-job09\": -1,\n            // \"luxury-job10\": -1,\n            // \"luxury-job11\": -1,\n            // \"luxury-job12\": -1,\n            // \"luxury-job13\": -1,\n            // \"luxury-job14\": -1,\n            // \"luxury-job15\": -1,\n\n            // \"u64g-job01\": -1,\n            // \"u64g-job02\": -1,\n            // \"u64g-job03\": -1,\n            // \"u64g-job04\": -1,\n            // \"u64g-job05\": -1,\n            // \"u64g-job06\": -1,\n            // \"u64g-job07\": -1,\n            // \"u64g-job08\": -1,\n            // \"u64g-job09\": -1,\n            // \"u64g-job10\": -1,\n            // \"u64g-job11\": -1,\n            // \"u64g-job12\": -1,\n            // \"u64g-job13\": -1,\n            // \"u64g-job14\": -1,\n            // \"u64g-job15\": -1,\n/*\n            \"rn-job01\": -1,\n            \"rn-job02\": -1,\n            \"rn2-job01\": -1,\n            \"rn2-job02\": -1,\n            \"rn2-job03\": -1,\n            \"rn3-job01\": -1,\n            \"rn3-job02\": -1,\n\n            \"mac16g-job01\": -1,\n            \"mac16g-job02\": -1,\n\n            \"mac15-job01\": -1,\n            \"mac15-job02\": -1,\n            \"mac15-job03\": -1,\n\n            \"gcs-job01\": -1,\n            \"gcs-job02\": -1,\n            \"gcs-job03\": -1,\n\n            \"gcs01-job01\": -1,\n            \"gcs01-job02\": -1,\n            \"gcs01-job03\": -1,\n            */\n        };\n    }\n\n    getJobs({ tag }) {\n        if (tag) {\n            return Object.entries(this.jobs)\n                .filter(([key]) => key.match(new RegExp(tag)))\n                .reduce((obj, [key, value]) => {\n                    obj[key] = value;\n                    return obj;\n                }, {});\n        }\n        return this.jobs;\n    }\n\n    getAvailable({ runtime }) {\n        node.warn(\"runtime:\" + runtime);\n        if (runtime === 'gpu') {\n            for (var name in this.jobs) {\n                if (name.includes(':gpu') && this.jobs[name] == 0) {\n                    this.jobs[name] = -2;\n                    return name;\n                }\n            }\n        } else {\n            for (var name in this.jobs) {\n                if (!name.includes(\":gpu\") && this.jobs[name] == 0) {\n                    this.jobs[name] = -2;\n                    return name;\n                }\n            }\n        }\n        return \"\"; // use first job\n    }\n}\n\nglobal.set('jobs', new JobManager());",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "f337672d511bea36"
+            ]
+        ]
+    },
+    {
+        "id": "338725dafe35ab4b",
+        "type": "delay",
+        "z": "75af274027ee97af",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 360,
+        "y": 420,
+        "wires": [
+            [
+                "52b152dfd6d5d97e"
+            ]
+        ]
+    },
+    {
+        "id": "895dfaca1025ff13",
+        "type": "debug",
+        "z": "75af274027ee97af",
+        "name": "顯示",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "52b152dfd6d5d97e",
+        "type": "function",
+        "z": "75af274027ee97af",
+        "name": "更新資訊",
+        "func": "var jobMgr = global.get('jobs');\nnode.warn(jobMgr.jobs);\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 420,
+        "wires": [
+            [
+                "895dfaca1025ff13"
+            ]
+        ]
+    },
+    {
+        "id": "214d19eaaf1fbee6",
+        "type": "http in",
+        "z": "75af274027ee97af",
+        "name": "",
+        "url": "/api/models",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 720,
+        "wires": [
+            [
+                "6de2cdd64c1cce35"
+            ]
+        ]
+    },
+    {
+        "id": "c470adb89788d04f",
+        "type": "function",
+        "z": "75af274027ee97af",
+        "name": "指派 Job",
+        "func": "var jobMgr = global.get('jobs');\nmsg.jobHome = jobMgr.getAvailable({ runtime: msg.req.query.runtime });\nnode.warn(\"use \" + msg.jobHome);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 720,
+        "wires": [
+            [
+                "4537e5fa18acc758"
+            ]
+        ]
+    },
+    {
+        "id": "f76d437ecb14f506",
+        "type": "debug",
+        "z": "75af274027ee97af",
+        "name": "清單",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1d6a2a39454dd5e9",
+        "type": "function",
+        "z": "75af274027ee97af",
+        "name": "顯示清單",
+        "func": "var jobMgr = global.get('jobs');\nnode.warn(jobMgr.jobs);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "f76d437ecb14f506"
+            ]
+        ]
+    },
+    {
+        "id": "9096425aaba2fb36",
+        "type": "inject",
+        "z": "75af274027ee97af",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "1d6a2a39454dd5e9"
+            ]
+        ]
+    },
+    {
+        "id": "4537e5fa18acc758",
+        "type": "switch",
+        "z": "75af274027ee97af",
+        "name": "",
+        "property": "jobHome",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 720,
+        "wires": [
+            [
+                "6daef1ebf5456e59"
+            ],
+            [
+                "ac76021bac21bf6b"
+            ]
+        ]
+    },
+    {
+        "id": "6daef1ebf5456e59",
+        "type": "http response",
+        "z": "75af274027ee97af",
+        "name": "",
+        "statusCode": "503",
+        "headers": {},
+        "x": 860,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "0dd528874afc7c77",
+        "type": "comment",
+        "z": "75af274027ee97af",
+        "name": "接收 HTTP post 影像訓練工作",
+        "info": "說明\n====\n\n 1. 瀏覽器透過 http post 拋送影像訓練工作\n 2. 避免瀏覽器同時拋送大量影像工作，透過 1 msg/s 限制同時每秒處理一個\n 3. ",
+        "x": 200,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "f402e80b3d359c6a",
+        "type": "comment",
+        "z": "75af274027ee97af",
+        "name": "查看各個工作員狀況",
+        "info": "",
+        "x": 170,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "8402b5f333aab608",
+        "type": "comment",
+        "z": "75af274027ee97af",
+        "name": "定時更新各個 Worker 狀況",
+        "info": "",
+        "x": 190,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6de2cdd64c1cce35",
+        "type": "delay",
+        "z": "75af274027ee97af",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 390,
+        "y": 720,
+        "wires": [
+            [
+                "c470adb89788d04f"
+            ]
+        ]
+    },
+    {
+        "id": "32af6dbb7e0f5c47",
+        "type": "http in",
+        "z": "75af274027ee97af",
+        "name": "",
+        "url": "/api/workers",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "130b03ea38087007"
+            ]
+        ]
+    },
+    {
+        "id": "73f070d6492283af",
+        "type": "comment",
+        "z": "75af274027ee97af",
+        "name": "顯示 workers 清單",
+        "info": "\n",
+        "x": 170,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "130b03ea38087007",
+        "type": "function",
+        "z": "75af274027ee97af",
+        "name": "顯示清單",
+        "func": "var jobMgr = global.get('jobs');\n// node.warn(jobMgr.jobs);\nmsg.payload = jobMgr.getJobs({ tag: msg.req.query.tag })\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "03456b2eb37b2dfb"
+            ]
+        ]
+    },
+    {
+        "id": "03456b2eb37b2dfb",
+        "type": "http response",
+        "z": "75af274027ee97af",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 520,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "ac76021bac21bf6b",
+        "type": "subflow:5c52e3f7e50cd19e",
+        "z": "75af274027ee97af",
+        "name": "SendJob",
+        "env": [
+            {
+                "name": "jobHome",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "x": 860,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f4838dee163a1f29",
+        "type": "subflow:1e831e2fcbd588fe",
+        "z": "e267595a6a2cbfb7",
+        "name": "luxury-job01",
+        "env": [
+            {
+                "name": "jobHome",
+                "value": "luxury-job01",
+                "type": "str"
+            },
+            {
+                "name": "accessKeyId",
+                "value": "AKIAY4GNWIPHQAM2LF5A",
+                "type": "str"
+            },
+            {
+                "name": "secretAccessKey",
+                "value": "IcSiGzK5kEEClXXQ4Oizc2ND7ve+yHNcO8FFpiew",
+                "type": "str"
+            },
+            {
+                "name": "region",
+                "value": "ap-northeast-2",
+                "type": "str"
+            },
+            {
+                "name": "bucket",
+                "value": "webduino-staging-eks-s3",
+                "type": "str"
+            },
+            {
+                "name": "jobHomePath",
+                "value": "/home/wa/docker/nodered_data",
+                "type": "str"
+            },
+            {
+                "name": "JobHomePath",
+                "value": "/home/wa/docker/nodered_users/train/webai-train-job01",
+                "type": "str"
+            }
+        ],
+        "x": 110,
+        "y": 40,
+        "wires": [],
+        "info": "正式機 S3 Access token\n======\naccessKeyId: AKIAY4GNWIPHQAM2LF5A\nsecretAccessKey: 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\nregion: ap-northeast-2\nbucket: webduino-eks-s3\n\n## 測試機\nbucket: webduino-staging-eks-s3\n"
+    },
+    {
+        "id": "038918302ad43345",
+        "type": "subflow:1e831e2fcbd588fe",
+        "z": "e267595a6a2cbfb7",
+        "name": "luxury-job02",
+        "env": [
+            {
+                "name": "jobHome",
+                "value": "luxury-job02",
+                "type": "str"
+            },
+            {
+                "name": "accessKeyId",
+                "value": "AKIAY4GNWIPHQAM2LF5A",
+                "type": "str"
+            },
+            {
+                "name": "secretAccessKey",
+                "value": "IcSiGzK5kEEClXXQ4Oizc2ND7ve+yHNcO8FFpiew",
+                "type": "str"
+            },
+            {
+                "name": "region",
+                "value": "ap-northeast-2",
+                "type": "str"
+            },
+            {
+                "name": "bucket",
+                "value": "webduino-staging-eks-s3",
+                "type": "str"
+            },
+            {
+                "name": "jobHomePath",
+                "value": "/home/wa/docker/nodered_data",
+                "type": "str"
+            },
+            {
+                "name": "JobHomePath",
+                "value": "/home/wa/docker/nodered_users/train/webai-train-job01",
+                "type": "str"
+            }
+        ],
+        "x": 270,
+        "y": 40,
+        "wires": [],
+        "info": "正式機 S3 Access token\n======\naccessKeyId: AKIAY4GNWIPHQAM2LF5A\nsecretAccessKey: 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\nregion: ap-northeast-2\nbucket: webduino-eks-s3\n\n## 測試機\nbucket: webduino-staging-eks-s3\n"
+    },
+    {
+        "id": "8e93588790781be2",
+        "type": "subflow:1e831e2fcbd588fe",
+        "z": "e267595a6a2cbfb7",
+        "name": "luxury-job03",
+        "env": [
+            {
+                "name": "jobHome",
+                "value": "luxury-job03",
+                "type": "str"
+            },
+            {
+                "name": "accessKeyId",
+                "value": "AKIAY4GNWIPHQAM2LF5A",
+                "type": "str"
+            },
+            {
+                "name": "secretAccessKey",
+                "value": "IcSiGzK5kEEClXXQ4Oizc2ND7ve+yHNcO8FFpiew",
+                "type": "str"
+            },
+            {
+                "name": "region",
+                "value": "ap-northeast-2",
+                "type": "str"
+            },
+            {
+                "name": "bucket",
+                "value": "webduino-staging-eks-s3",
+                "type": "str"
+            },
+            {
+                "name": "jobHomePath",
+                "value": "/home/wa/docker/nodered_data",
+                "type": "str"
+            },
+            {
+                "name": "JobHomePath",
+                "value": "/home/wa/docker/nodered_users/train/webai-train-job01",
+                "type": "str"
+            }
+        ],
+        "x": 430,
+        "y": 40,
+        "wires": [],
+        "info": "正式機 S3 Access token\n======\naccessKeyId: AKIAY4GNWIPHQAM2LF5A\nsecretAccessKey: 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\nregion: ap-northeast-2\nbucket: webduino-eks-s3\n\n## 測試機\nbucket: webduino-staging-eks-s3\n"
+    },
+    {
+        "id": "78fa10e068209922",
+        "type": "postgresql",
+        "z": "dd2457f29a916d8b",
+        "g": "af8f08fd1fbf82a8",
+        "name": "select",
+        "query": "SELECT * FROM \"models\"",
+        "postgreSQLConfig": "ad4dd764831bdb12",
+        "split": false,
+        "rowsPerMsg": "1",
+        "outputs": 1,
+        "x": 290,
+        "y": 140,
+        "wires": [
+            [
+                "4258d6cd7a05c812"
+            ]
+        ],
+        "info": "\nINSERT INTO \"models\" (\n\"id\", \"name\", \"owner\", \"classes\", \"hyperparameters\", \n\"loss\", \"kfpkg\", \"shared\", \"create_time\", \"update_time\", \n\"source_model\", \"error\", \"status\", \"model_type\", \n\"object_model_id\", \"notify_email\")\nVALUES (\n'fc28294b-4b8b-4415-bd0a-70032a0c693a', 'marty', '4', '{\"a\":\"abc\"}', '{\"a\":\"abc\"}', \nNULL, NULL, '0', timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), \nNULL, NULL, 'TRAINING', NULL, \nNULL, 'marty@kingkit101.com');"
+    },
+    {
+        "id": "0ff03a781ffed316",
+        "type": "inject",
+        "z": "dd2457f29a916d8b",
+        "g": "af8f08fd1fbf82a8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "78fa10e068209922"
+            ]
+        ]
+    },
+    {
+        "id": "65aa3b6f452bd0a9",
+        "type": "file",
+        "z": "dd2457f29a916d8b",
+        "name": "write",
+        "filename": "db_models.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 470,
+        "y": 440,
+        "wires": [
+            [
+                "0c0e200feea85b09"
+            ]
+        ]
+    },
+    {
+        "id": "0c0e200feea85b09",
+        "type": "debug",
+        "z": "dd2457f29a916d8b",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "092e470a6033b92e",
+        "type": "inject",
+        "z": "dd2457f29a916d8b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 440,
+        "wires": [
+            [
+                "31130754ffd6cf26"
+            ]
+        ]
+    },
+    {
+        "id": "b164d97c1fd57df3",
+        "type": "function",
+        "z": "dd2457f29a916d8b",
+        "name": "function 2",
+        "func": "msg.payload = \"123123\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 540,
+        "wires": [
+            [
+                "a326444fac4b380f"
+            ]
+        ]
+    },
+    {
+        "id": "cfdae3c71a971a57",
+        "type": "debug",
+        "z": "dd2457f29a916d8b",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "40c93cbb97cabe0a",
+        "type": "inject",
+        "z": "dd2457f29a916d8b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 540,
+        "wires": [
+            [
+                "b164d97c1fd57df3"
+            ]
+        ]
+    },
+    {
+        "id": "a326444fac4b380f",
+        "type": "file in",
+        "z": "dd2457f29a916d8b",
+        "name": "",
+        "filename": "db_models.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 500,
+        "y": 540,
+        "wires": [
+            [
+                "cfdae3c71a971a57"
+            ]
+        ]
+    },
+    {
+        "id": "e03c158945cff899",
+        "type": "debug",
+        "z": "dd2457f29a916d8b",
+        "g": "af8f08fd1fbf82a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4258d6cd7a05c812",
+        "type": "function",
+        "z": "dd2457f29a916d8b",
+        "g": "af8f08fd1fbf82a8",
+        "name": "Save Models",
+        "func": "var list = msg.payload;\n\nfunction toRow(obj){\n    var row = [\n        obj.id,\n        obj.name,\n        obj.owner,\n        JSON.stringify(obj.classes),\n        JSON.stringify(obj.hyperparameters),\n        obj.loss,\n        obj.kfpkg,\n        obj.shared,\n        obj.create_time,\n        obj.update_time,\n        obj.source_model,\n        obj.error,\n        obj.status,\n        obj.model_type,\n        obj.object_model_id,\n        obj.notify_email,\n    ];\n    return row;\n}\n\nvar rows = [];\nfor(var i in list){\n    rows.push(toRow(list[i]));\n}\nmsg.payload = rows;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 140,
+        "wires": [
+            [
+                "bdcca09493b5b5c4"
+            ]
+        ]
+    },
+    {
+        "id": "31130754ffd6cf26",
+        "type": "template",
+        "z": "dd2457f29a916d8b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "",
+        "output": "str",
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "65aa3b6f452bd0a9"
+            ]
+        ]
+    },
+    {
+        "id": "bdcca09493b5b5c4",
+        "type": "subflow:d636f9e112c0b0b9",
+        "z": "dd2457f29a916d8b",
+        "g": "af8f08fd1fbf82a8",
+        "name": "",
+        "env": [
+            {
+                "name": "sheetUrl",
+                "value": "https://docs.google.com/spreadsheets/d/1hU8QgVM9XUDVKatY1XSzx8nQm1KQSt8ZaoX8edRwN1Q/edit#gid=0",
+                "type": "str"
+            },
+            {
+                "name": "sheetName",
+                "value": "models",
+                "type": "str"
+            },
+            {
+                "name": "append",
+                "value": "true",
+                "type": "bool"
+            }
+        ],
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "e03c158945cff899"
+            ]
+        ]
+    },
+    {
+        "id": "d2aa75eb874dfa2d",
+        "type": "postgresql",
+        "z": "dd2457f29a916d8b",
+        "g": "356036784e8d4c20",
+        "name": "select",
+        "query": "SELECT * FROM \"datasets\"",
+        "postgreSQLConfig": "ad4dd764831bdb12",
+        "split": false,
+        "rowsPerMsg": "1",
+        "outputs": 1,
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "bbfc9bf0893a0508"
+            ]
+        ],
+        "info": "\nINSERT INTO \"models\" (\n\"id\", \"name\", \"owner\", \"classes\", \"hyperparameters\", \n\"loss\", \"kfpkg\", \"shared\", \"create_time\", \"update_time\", \n\"source_model\", \"error\", \"status\", \"model_type\", \n\"object_model_id\", \"notify_email\")\nVALUES (\n'fc28294b-4b8b-4415-bd0a-70032a0c693a', 'marty', '4', '{\"a\":\"abc\"}', '{\"a\":\"abc\"}', \nNULL, NULL, '0', timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), timezone('Asia/Taipei', CURRENT_TIMESTAMP(3)), \nNULL, NULL, 'TRAINING', NULL, \nNULL, 'marty@kingkit101.com');"
+    },
+    {
+        "id": "240a02b75ab58cad",
+        "type": "inject",
+        "z": "dd2457f29a916d8b",
+        "g": "356036784e8d4c20",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "d2aa75eb874dfa2d"
+            ]
+        ]
+    },
+    {
+        "id": "222b84cceb9db65b",
+        "type": "debug",
+        "z": "dd2457f29a916d8b",
+        "g": "356036784e8d4c20",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "bbfc9bf0893a0508",
+        "type": "function",
+        "z": "dd2457f29a916d8b",
+        "g": "356036784e8d4c20",
+        "name": "Datasets",
+        "func": "var list = msg.payload;\nconst delay = ms => new Promise(res => setTimeout(res, ms))\n\nfunction toRow(obj) {\n    var row = [\n        obj.id,\n        obj.name,\n        obj.owner,\n        obj.shared,\n        obj.count,\n        obj.description,\n        obj.thumbnail,\n        obj.concatenated,\n        obj.create_time,\n        obj.update_time,\n        obj.ready,\n    ];\n    return row;\n}\n\nvar rows = [];\nvar cnt = 0;\nfor (var i in list) {\n    cnt++;\n    rows.push(toRow(list[i]));\n    if(rows.length == 100){\n        msg.payload = rows;\n        node.warn(\"send rows:\"+cnt);\n        node.send(msg);\n        rows = [];\n        await delay(60*1000);\n    }\n}\n\nmsg.payload = rows;\nnode.send(msg);\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "fe17e8a12a5295fe"
+            ]
+        ]
+    },
+    {
+        "id": "fe17e8a12a5295fe",
+        "type": "subflow:d636f9e112c0b0b9",
+        "z": "dd2457f29a916d8b",
+        "g": "356036784e8d4c20",
+        "name": "",
+        "env": [
+            {
+                "name": "sheetUrl",
+                "value": "https://docs.google.com/spreadsheets/d/1hU8QgVM9XUDVKatY1XSzx8nQm1KQSt8ZaoX8edRwN1Q/edit#gid=0",
+                "type": "str"
+            },
+            {
+                "name": "sheetName",
+                "value": "datasets",
+                "type": "str"
+            },
+            {
+                "name": "append",
+                "value": "true",
+                "type": "bool"
+            }
+        ],
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "222b84cceb9db65b"
+            ]
+        ]
+    },
+    {
+        "id": "f289ffed3ab5062c",
+        "type": "comment",
+        "z": "dd2457f29a916d8b",
+        "g": "af8f08fd1fbf82a8",
+        "name": "匯出 Models",
+        "info": "",
+        "x": 170,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8e4e9a0f3d9621e9",
+        "type": "comment",
+        "z": "dd2457f29a916d8b",
+        "g": "356036784e8d4c20",
+        "name": "匯出 Datasets",
+        "info": "",
+        "x": 170,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2dc0c51da1410df4",
+        "type": "comment",
+        "z": "dd2457f29a916d8b",
+        "name": "壓力測試",
+        "info": "\n可測試 n 個影像訓練，並得知訓練結果\n",
+        "x": 180,
+        "y": 380,
         "wires": []
     }
 ]
